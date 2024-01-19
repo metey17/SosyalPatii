@@ -13,18 +13,12 @@
 [class^="icon-"],
 [class*=" icon-"] {
     font-family: 'icomoon' !important;
-    speak: never;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
-    text-transform: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-vet:before {
-    content: "\e922";
-}
+
 
 .icon-dog:before {
     content: "\e923";
@@ -141,11 +135,6 @@
 .icon-dog9:before {
     content: "\e93f";
 }
-
-.icon-rabbit:before {
-    content: "\e940";
-}
-
 .icon-dog10:before {
     content: "\e941";
 }
@@ -156,10 +145,6 @@
 
 .icon-chat:before {
     content: "\e943";
-}
-
-.icon-rabbit1:before {
-    content: "\e944";
 }
 
 .icon-dog11:before {
@@ -234,13 +219,8 @@
     content: "\e909";
 }
 
-.icon-shoping-troli:before {
-    content: "\e90a";
-}
 
-.icon-twitter:before {
-    content: "\e90b";
-}
+
 
 .icon-what:before {
     content: "\e90c";
@@ -266,25 +246,6 @@
     content: "\e911";
 }
 
-.icon-phone:before {
-    content: "\e912";
-}
-
-.icon-facebook:before {
-    content: "\e913";
-}
-
-.icon-instagram:before {
-    content: "\e914";
-}
-
-.icon-linkedin:before {
-    content: "\e915";
-}
-
-.icon-calender:before {
-    content: "\e916";
-}
 
 .icon-user:before {
     content: "\e917";
