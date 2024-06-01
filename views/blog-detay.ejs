@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html lang="tr-TR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content>
-    <meta name="keywords" content>
-    <title>Petshop - HTML5 Template</title>
-    <link rel="icon" type="image/x-icon" href="assets/img/logo/favicon.png">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/all-fontawesome.min.css">
-    <link rel="stylesheet" href="assets/css/icomoon.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
+<%- include('./partials/_header2.ejs') %>
 
 <body class="home-3">
     <div class="preloader">
@@ -27,69 +9,7 @@
         </div>
     </div>
 
-    <div class="main-navigation">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container custom-nav">
-                <a class="navbar-brand" href="index.html">
-                    <img src="assets/img/logo/logo.png" alt="logo">
-                </a>
-                <div class="mobile-menu-right">
-                    <div class="mobile-menu-list">
-                        <a href="#" class="mobile-menu-link search-box-outer"><i class="far fa-search"></i></a>
-                    </div>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-btn-icon"><i class="far fa-bars"></i></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="main_nav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Anasayfa</a></li>
-                        <li class="nav-item"><a class="nav-link" href="hakkimizda.html">Bizi Tanıyın</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Kedi</a>
-                            <ul class="dropdown-menu fade-down">
-                                <li><a class="dropdown-item" href="kedi-sahiplendirme.html">Kedi Sahiplendirme</a></li>
-                                <li><a class="dropdown-item" href="kedi-esbulma.html">Kedi Eş Bulma</a></li>
-                                <li><a class="dropdown-item" href="kedi-cinsleri.html">Kedi Cinsleri</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Köpek</a>
-                            <ul class="dropdown-menu fade-down">
-                                <li><a class="dropdown-item" href="kopek-sahiplendirme.html">Köpek Sahiplendirme</a></li>
-                                <li><a class="dropdown-item" href="es-bulma.html">Köpek Eş Bulma</a></li>
-                                <li><a class="dropdown-item">Köpek Cinsleri</a></li>
-                            </ul>
-                        </li>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Veteriner</a></li>
-
-                        <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
-                    </ul>
-                    <div class="header-nav-right">
-                        <div class="header-nav-search">
-                            <a href="#" class="header-nav-link search-box-outer"><i class="far fa-search"></i></a>
-                        </div>
-                        <div class="header-btn">
-                            <a href="giris.html" class="theme-btn mt-2">Giriş Yap<i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </div>
-
-    <div class="search-popup">
-        <button class="close-search"><span class="far fa-times"></span></button>
-        <form action="#">
-            <div class="form-group">
-                <input type="search" name="search-field" placeholder="Aranacak Kelime..." required>
-                <button type="submit"><i class="far fa-search"></i></button>
-            </div>
-        </form>
-    </div>
+    <%- include('./partials/_navbar.ejs') %>
 
     <main class="main">
 
@@ -109,8 +29,8 @@
                     <div class="col-lg-8">
                         <div class="blog-single-wrapper">
                             <div class="blog-single-content">
-                                <div class="blog-thumb-img">
-                                    <img src="assets/img/blog/single.jpg" alt="thumb">
+                                <div class="blog-thumb-img" >
+                                    <img src="" alt="thumb" style="width: 100%; ">
                                 </div>
                                 <div class="blog-info">
                                     <div class="blog-meta">
@@ -126,45 +46,48 @@
                                         </div>
                                     </div>
                                     <div class="blog-details">
-                                        <h3 class="blog-details-title mb-20">Ücretsiz Cins Kedi Sahiplendirme ve Sahiplenme</h3>
+                                        <h3 class="blog-details-title mb-20">
+                                            <!-- content -->hhh
+                                        </h3>
 
-                                        <p class="mb-10">
-                                            Cins Kedi Sahiplendirme Nedir?; Cins Kedi Sahiplendirme, bir türe özgü olan kedinin bir aile tarafından başka bir aileye iyi bakılmak üzere verilmesidir, aileler çeşitli konularda uzlaşarak sevgi dolu yumurcağa iyi bakılacağı üzerinde uzlaşırlar.
+                                        <p class="mb-10 blog-details-description">
+                                            <!-- content -->
                                         </p>
-                                        <p class="mb-10">
+                                        <!-- <p class="mb-10">
                                             Kediler bir bakıma sokak ve caddelerin gerçek sahipleridirler. Mahallelerin ve evlerin neşe kaynağıdırlar. Kediler,insan yaşamının hemen hemen her alanında kendine önemli bir yer bulmaktadır.Dünyada en güzel canlılar arasında yer alan kediler çok sevimli ve cana yakın canlılardır. Bu güzel canlıların da bir çok çeşidi vardır. Ayrıca kediler, 200’den fazla değişik ses çıkarma yeteneğine sahiptir. 
-                                        </p>
-                                        <blockquote class="blockqoute">
+                                        </p> -->
+                                        <!-- <blockquote class="blockqoute">
                                             Bir gece sanki derinden gelen bir bebek ağlama sesi duyduğunuzu ancak ortada herhangi bir bebek göremiyorsanız bilin ki o yüksek ihtimalle bir kedidir. İnsanlık tarihinin hemen hemen her zamanında yerini alan bu sevimli hayvan türü ,antik zamanlarda tanrı olarak görüyorlardı. Bazen de yerleşim yerlerinin medeniyet ve kültürlerin sembolü olarak bilinirdi. Kediler çeşitli türleri ile evlerin ve sokakların vazgeçilmez bekçileri haline geldiler. Bulundukları ortamdaki negatif enerjiyi pozitif enerjiye çevirme özellikleri vardır. Ayrıca eski tarihlerde ev yaparlarken bir kediyi evin içine bırakıp beklemeye başlarlarmış. Kedi hangi odada uyursa o oda yatak odası yapılırmış. Çünkü kediler, uykusuna yani rahat bir uykuya en çok önem veren canlılardır.
                                             <h6 class="blockqoute-author">Mark Crawford</h6>
-                                        </blockquote>
-                                        <h4>Cins Kedi Sahiplenme</h4>
+                                        </blockquote> -->
+                                        <br>
+                                        <!-- <h4>Cins Kedi Sahiplenme</h4>
                                         <p class="mb-20">
                                             Kedilere sadece hayvan gözüyle bakmamak gerekir. Çünkü bazen ev arkadaşı, bazen sırdaş bazen de yakın arkadaş olurlar. Sizi rahatsız etmeden sevimli bir şekilde size bakıp sizinle oyun oynamak isterler. Bazen evleri bazen de tarlaları işgal eden fareleri avlayarak ev ve tarla sahiplerine iyilik yaparlar. Yani sadece köpekler değil kediler de ev bekçileridir.
-                                        </p>
-                                        <div class="row">
+                                        </p> -->
+                                        <!-- <div class="row">
                                             <div class="col-md-6 mb-20">
                                                 <img src="assets/img/blog/01.jpg" alt>
                                             </div>
                                             <div class="col-md-6 mb-20">
                                                 <img src="assets/img/blog/02.jpg" alt>
                                             </div>
-                                        </div>
-                                        <p class="mb-20">Kedi sahiplenmek faydalıdır, bunun için de bazı bilinmesi gereken bilgiler vardır.</p>
+                                        </div> -->
+                                        <!-- <p class="mb-20">Kedi sahiplenmek faydalıdır, bunun için de bazı bilinmesi gereken bilgiler vardır.</p>
                                         <p class="mb-20">Kedi sahiplenmek basit bir şey değildir. Çünkü kedinin birtakım ihtiyaçları vardır. Bunları göz önünde bulundurmak gerekir.</p>
                                         <p class="mb-20">Beslenme, barınma ve şefkat göstermek gibi en temelde bulunan ihtiyaçlarının giderilmesi biz insanların da aynı ihtiyaçlarının olması hemen hemen onları daha da iyi anlamamızı ve empati kurmamızı sağlar. Kedi sahiplenmenin neden yapıldığı konusunda ise şunları söyleyebiliriz.</p>
-                                        <p class="mb-20">21. asrın en büyük sorunlarından birisi olan bireyselleşmiş olan toplumlar, hayat mücadelesi içerisindeki insan yaşamlarını yalnızlaştıran ve insanın doğasına ters bir biçimde onları toplumdan soyutlanmış kefesine koymaktadır. Hayat mücadelesini kazanmak adına bütün gününü çalışmaya ve devamlı olarak daha iyisini ortaya çıkarmak adına çalışıp çabalayarak geçiren insanlar bu rutin hayatta genel olarak yalnızlık sebebi ile geride kalmaktadır.</p>
+                                        <p class="mb-20">21. asrın en büyük sorunlarından birisi olan bireyselleşmiş olan toplumlar, hayat mücadelesi içerisindeki insan yaşamlarını yalnızlaştıran ve insanın doğasına ters bir biçimde onları toplumdan soyutlanmış kefesine koymaktadır. Hayat mücadelesini kazanmak adına bütün gününü çalışmaya ve devamlı olarak daha iyisini ortaya çıkarmak adına çalışıp çabalayarak geçiren insanlar bu rutin hayatta genel olarak yalnızlık sebebi ile geride kalmaktadır.</p> -->
                                         <hr>
-                                        <div class="blog-details-tags pb-20">
+                                        <!-- <div class="blog-details-tags pb-20">
                                             <h5>Etiketler : </h5>
                                             <ul>
                                                 <li><a href="#">Evcil Hayvanlar</a></li>
                                                 <li><a href="#">Hayvanlar</a></li>
                                                 <li><a href="#">Bakım</a></li>
                                             </ul>
-                                        </div>
+                                        </div> -->
                                     </div>
-                                    <div class="blog-author">
+                                    <!-- <div class="blog-author">
                                         <div class="blog-author-img">
                                             <img src="assets/img/blog/author.jpg" alt>
                                         </div>
@@ -181,7 +104,7 @@
                                                 <a href="#"><i class="fab fa-whatsapp"></i></a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- <div class="blog-comments">
                                     <h3>Comments (20)</h3>
@@ -254,6 +177,88 @@
                             </div>
                         </div>
                     </div>
+
+
+
+
+<script>
+    // Sayfa yüklendiğinde blogları al ve kartları oluştur
+document.addEventListener('DOMContentLoaded', () => {
+    getBlogPosts();
+});
+
+// "/getBlog" endpoint'ine yapılan isteği işleyen fonksiyon
+function getBlogPosts() {
+    const blogName = localStorage.getItem('blogName');
+    fetch('/getBlog', {
+        method: 'POST', // Get isteği gönder
+        headers: {
+            'Content-Type': 'application/json' // İçerik tipini belirt
+        },
+        body: JSON.stringify({
+            blogName:blogName
+        })
+    })
+    .then(response => response.json()) // Gelen yanıtı JSON olarak dönüştür
+    .then(data => {
+        // Blog kartlarını oluştur
+        // createBlogCards(data);
+
+        const blogDetails = document.querySelector('.blog-info .blog-details');
+    let blogTitle = blogDetails.querySelector('.blog-details-title');
+    let blogDescription = blogDetails.querySelector('.blog-details-description');
+    let author = document.querySelector('.blog-meta-left ul li a');// Blog kartlarının ekleneceği div'i seç
+    let imgSrc = document.querySelector('.blog-thumb-img img');
+
+    author.textContent = data[0].author;    
+    blogTitle.textContent = data[0].title;
+    blogDescription.textContent = data[0].description;
+    imgSrc.src = "assets/img/blog/"+data[0].img_name;
+
+
+    })
+    .catch(error => console.error('Hata:', error)); // Hata durumunda konsola hata mesajını yazdır
+
+
+}
+
+// Blog kartlarını oluşturan fonksiyon
+// function createBlogCards(blog) {
+   
+//     // Her bir blog için kart oluştur
+    
+//         // Blog kartı elementlerini oluştur
+
+//         const dateObj = new Date(blog.date);
+//     const day = dateObj.getDate();
+//     // Ay bilgisi 0'dan başladığı için 1 ekleyerek alıyoruz
+//     const month = dateObj.getMonth() + 1;
+//     const year = dateObj.getFullYear();
+
+//     // Tarihi istediğimiz formatta oluştur
+//     const formattedDate = `${day}.${month}.${year}`;
+
+
+//     //     let shortDescription = blog.description;
+//     // if (shortDescription.length > 200) {
+//     //     shortDescription = shortDescription.substring(0, 200) + '...';
+//     // }
+    
+        
+   
+// }
+
+</script>
+
+
+
+
+
+
+
+
+
+
                     <div class="col-lg-4">
                         <aside class="sidebar">
 

@@ -1,0 +1,889 @@
+
+
+<%- include('./partials/_header2.ejs') %>
+
+<%- include('./partials/_navbar.ejs') %>
+
+
+<div id="messageBox" style="font-weight: 900; background-color: rgb(255, 77, 131); color: #fff; border-radius: 20px; z-index: 1000000; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); display: none; justify-content: center; align-items: center; cursor: pointer; width: 250px; height: 40px; position: fixed; right: 20px; bottom: 20px;">
+    Mesajlar
+</div>
+
+
+
+
+<div class="" id="messageBig" style=" z-index: 1000000; box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5); background-color: #fff; display: blog; width: 20%; position:fixed; height:100%; bottom:0px; right:0px;">
+    <div class="" style=" width: 100%; height:100%;">
+    <div class="col-md-8" style="width: 100%; height: 100%;">
+        <div class="chat_container" style="height: 100%;">
+            <div class="job-box" style="height: 100%;">
+                <div class="job-box-filter">
+                    <div class="row">
+                    
+                        <div class="" style="display: flex; flex-direction: row; justify-content: space-between;align-items: center;">
+                            <h4>Anlik Mesajlasma</h4>
+                            <i class="fa-solid fa-xmark" style="cursor: pointer;font-size: large;" id="closeMessage"></i>
+                        </div>
+                        <!-- <div class="col-md-6 col-sm-6">
+                            <div class="filter-search-box text-left">
+                                <label>Search:<input type="search" class="form-control input-sm" placeholder=""></label>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="inbox-message" style="height: 100%; ">
+                    <ul style="overflow-y: scroll; height: 100%;">
+
+                        <!-- <li>
+                            <a class="aele" href="#">
+                                <div class="message-avatar">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                                </div>
+                                <div class="message-body">
+                                    <div class="message-body-heading">
+                                        <h5>sena</h5>
+                                        <span>7 hours ago</span>
+                                    </div>
+                                    
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="aele" href="#">
+                                <div class="message-avatar">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                                </div>
+                                <div class="message-body">
+                                    <div class="message-body-heading">
+                                        <h5>Ezgi Sencer</h5>
+                                        <span>7 hours ago</span>
+                                    </div>
+                                    
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="aele" href="#">
+                                <div class="message-avatar">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                                </div>
+                                <div class="message-body">
+                                    <div class="message-body-heading">
+                                        <h5>ali</h5>
+                                        <span>7 hours ago</span>
+                                    </div>
+                                    
+                                </div>
+                            </a>
+                        </li>
+                        -->
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+
+   
+
+
+
+    <!-- chat window -->
+
+
+    
+
+    <div id="chatWindow" style="display: none; position: fixed; z-index: 1000000; height: 100%; width: 100%; ">
+        <div class="" style=" width: 100%; height: 100%;">
+            <div  style="width: 100%; height: 100%;">
+                <div class="card" style="width: 100%; overflow-y: scroll; max-height: 90%; min-height: 90%;">
+                    <div class="card-header" style="display: flex; align-items: center; justify-content: space-between;"> 
+                        <span id="chatName" ></span>
+                        <i class="fa-solid fa-xmark" style="cursor: pointer;font-size: large;" id="closeWindow"></i>
+                    </div>
+                    
+                    <div class="card-body height3" style="z-index: 100000;height: 90%; overflow-y: scroll;">
+                        <div style=" width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;" >
+                            <div class="spinner-border" id="loader" role="status" style="display: none;">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        </div>
+                        
+                        <ul class="chat-list" id="messages2" style="overflow-y: scroll; ">
+                            
+                            <!-- <li class="in">
+                                <div class="chat-img">
+                                    <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+                                </div>
+                                <div class="chat-body" >
+                                    <div class="chat-message">
+                                        <h5>Jimmy Willams</h5>
+                                        <p>Raw denim heard of them tofu master cleanse</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="out">
+                                <div class="chat-img">
+                                    <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar6.png">
+                                </div>
+                                <div class="chat-body">
+                                    <div class="chat-message">
+                                        <h5>Serena</h5>
+                                        <p>Next level veard</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="in">
+                                <div class="chat-img">
+                                    <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+                                </div>
+                                <div class="chat-body">
+                                    <div class="chat-message">
+                                        <h5 class="name">Jimmy Willams</h5>
+                                        <p>Will stumptown scenes coffee viral.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="out">
+                                <div class="chat-img">
+                                    <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar6.png">
+                                </div>
+                                <div class="chat-body">
+                                    <div class="chat-message">
+                                        <h5>Serena</h5>
+                                        <p>Next level veard</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="out">
+                                <div class="chat-img">
+                                    <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar6.png">
+                                </div>
+                                <div class="chat-body">
+                                    <div class="chat-message">
+                                        <h5>Serena</h5>
+                                        <p>Next level veard</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="in">
+                                <div class="chat-img">
+                                    <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+                                </div>
+                                <div class="chat-body">
+                                    <div class="chat-message">
+                                        <h5 class="name">Jimmy Willams</h5>
+                                        <p>Will stumptown scenes coffee viral.</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="out">
+                                <div class="chat-img">
+                                    <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar6.png">
+                                </div>
+                                <div class="chat-body">
+                                    <div class="chat-message">
+                                        <h5>Serena</h5>
+                                        <p>Tofu master best deal</p>
+                                    </div>
+                                </div>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bottom_wrapper clearfix" style="height: 10%;">
+                    <div class="message_input_wrapper">
+                        <input class="message_input" id="input" placeholder="Type your message here..." />
+                    </div>
+                    <div class="send_message" id="form">
+                        <div class="icon"></div>
+                        <div class="text" ><i class="fa-solid fa-paper-plane"></i></div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    var token = localStorage.getItem("token");
+
+    if (token) {
+        // Token varsa, sunucuya tokeni göndererek kullanıcı bilgilerini al
+        $.ajax({
+            type: 'POST',
+            url: '/getUserInfo',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            success: function(response) {
+                // Başarılı cevap geldiğinde navbarı güncelle
+                document.getElementById("messageBox").style.display = "flex"; // Giriş yap butonunu gizle
+                // document.getElementById("message").style.display = "block"; // Çıkış yap butonunu göster
+                const token = response.token; // Tokeni al
+                const name = response.name; // Kullanıcı adını al
+                const email = response.email; 
+                localStorage.setItem('name', name);
+                document.getElementById("usernamePlaceholder").innerText = response.name; // Kullanıcı adını navbara ekle
+            },
+            error: function(xhr, status, error) {
+                console.log('Kullanıcı bilgilerini alma hatası:', error);
+            }
+        });
+    } else {
+        // Token yoksa, giriş yap butonunu göster
+        document.getElementById("messageBox").style.display = "none";
+        // Çıkış yap butonunu gizle
+        // document.getElementById("clo").style.display = "none";
+    }
+
+   
+});
+
+
+
+</script>
+            
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
+<script>
+  //client.js
+// document.addEventListener('DOMContentLoaded', function () {
+
+    //listede tiklanan kisi ismini sunucuya gonderir
+
+
+
+    var socket = io();
+    var messageItems = document.querySelectorAll('.inbox-message ul li');
+    var form = document.querySelector('#form');
+    var input = document.getElementById('input');
+    var messages = document.getElementById('messages2');
+
+
+form.addEventListener('click', function() {
+    const inputValue = input.value.trim();
+    if (inputValue !== "") {
+        const userName = localStorage.getItem('target').trim(); // Hedef kullanıcı adını al
+        const yourName = localStorage.getItem('name').trim(); // Kullanıcı adınızı al
+        userMessage2(inputValue);
+        socket.emit('newMessage', { username: userName, message: inputValue, yourname: yourName }); // Mesajı gönder
+        showMessage('sen', inputValue, yourName, userName); // Mesajı göster
+        input.value = ''; // Inputu temizle
+        messages.scrollTop = messages.scrollHeight;
+    }
+});
+
+input.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') { // Enter tuşuna basıldığında
+        const inputValue = input.value.trim();
+        if (inputValue !== "") {
+            const userName = localStorage.getItem('target').trim(); // Hedef kullanıcı adını al
+            const yourName = localStorage.getItem('name').trim(); // Kullanıcı adınızı al
+            userMessage2(inputValue);
+            socket.emit('newMessage', { username: userName, message: inputValue, yourname: yourName }); // Mesajı gönder
+            showMessage('sen', inputValue, yourName, userName); // Mesajı göster
+            input.value = ''; // Inputu temizle
+            messages.scrollTop = messages.scrollHeight;
+        }
+    }
+});
+
+
+
+    function userMessage2(msg) {
+    
+        let user = localStorage.getItem('name');
+        let target = localStorage.getItem('target');
+
+
+        // AJAX POST isteği yap
+        fetch('/setMessage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                desc: msg,
+                target: target,
+                your: user
+    })
+        })
+        .then(response => {
+            if (response.ok) {
+                
+                // document.getElementById('desc').value = '';
+             
+            } else {
+                // Hata durumunda
+                console.error('Hata:', response.status, response.statusText);
+                alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+            }
+        })
+        .catch(error => {
+            console.error('Hata:', error);
+            alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+        });
+  
+}
+
+
+
+
+
+
+window.onload = () => {
+    const yourName = localStorage.getItem('name').trim(); // Kullanıcı adınızı al
+        socket.emit('join', { username: yourName });
+}
+
+
+
+function showLoader() {
+    // Yükleme göstergesini görünür hale getir
+    document.querySelector('#loader').style.display = 'block';
+}
+
+function hideLoader() {
+    // Yükleme göstergesini gizle
+    document.querySelector('#loader').style.display = 'none';
+}
+
+
+
+async function getOldMessages(userName, yourName ) {
+    
+  try {
+   
+    hideLoader();
+      
+    const response = await fetch('/getOldMessages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        sender: yourName, 
+        receiver: userName
+      }),
+    });
+
+    if (!response.ok) {
+      // Hata durumunda
+      console.error('Veritabanı hatası:', response.statusText);
+      hideLoader();
+      return;
+    }
+
+    const data = await response.json();
+
+    if (data.error) {
+      console.error('Veritabanı hatası:', data.error);
+      // Hatayı kullanıcıya gösterin
+      return;
+    }
+    showLoader()
+    setTimeout(() => {
+       
+
+    if (data.result.length === 0 && data.result2.length === 0) {
+      // Gösterilecek mesaj yok
+      
+      console.log('Herhangi bir eski mesaj bulunamadı.');
+      hideLoader();
+      return;
+    }
+
+    console.log(data.result2)
+    
+      // Mesajları göster
+    //   const result = data.result;
+    //   result.forEach(msg=>{
+    //     showMessage('sen', msg.message, userName, yourName);
+
+    //   })
+
+    //   const result2 = data.result2;
+    //   result2.forEach(msg=>{
+    //     showMessage(1, msg.message, yourName, userName);
+    //     console.log(msg.message)
+    //   })
+
+    const allMessages = [...data.result, ...data.result2];
+
+// Tarihlerine göre sıralama
+allMessages.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+// Sıralı mesajları ekrana basma
+allMessages.forEach(msg => {
+    // Her bir mesaj için showMessage fonksiyonunu çağırarak ekrana basın
+    showMessage(msg.sender === yourName ? 'sen' : 1, msg.message, yourName, userName);
+    messages.scrollTop = messages.scrollHeight;
+});
+
+      hideLoader()
+    },100);
+
+    
+  } catch (error) {
+    console.error('Hata:', error);
+    hideLoader()
+    // Hatayı kullanıcıya gösterin
+  }
+}
+
+
+
+
+socket.on('newMessage', (data) => {
+    const senderName = data.username; // Gönderenin kullanıcı adı
+    const message = data.message; // Mesaj içeriği
+    const yourname = data.yourname; // Gönderenin kullanıcı adı
+
+    console.log(senderName + ' kullanıcısından gelen mesaj: ' + message +' '+yourname);
+
+    showMessage('moment', message, yourname, senderName);
+});
+
+
+    function showMessage(sender, msg, yourName, userName) {
+        var messages = document.getElementById('messages2');
+        var item = document.createElement('li');
+        var realName;
+        // var chan;
+        console.log(yourName+'--------------')
+        
+    
+        if(sender == 'sen'){
+            item.classList.add('out');
+            realName = 'Ben';
+        }
+        else if(sender == 'moment' ){
+            item.classList.add('in');
+            realName = String(yourName).trim();
+        }
+        else{
+            item.classList.add('in');
+            realName = String(userName).trim();
+        }
+        
+        var chan = String(document.querySelector('#chatName').textContent).trim();
+        console.log(chan+'chan degeri')
+        console.log(userName+'username')
+        console.log(yourName+'yourname')
+       
+        if( realName == chan || realName == 'Ben' ){
+                
+        item.innerHTML = `
+            <div class="chat-img">
+                <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+            </div>
+            <div class="chat-body">
+                <div class="chat-message">
+                    <h5 class="name">${realName}</h5>
+                    <p>${msg}</p>
+                </div>
+            </div>
+        `;
+        messages.appendChild(item);
+
+        messages.scrollTop = messages.scrollHeight;
+        }
+        if(realName != chan){
+            console.log('kullanim disi')
+        }
+       
+        
+    }
+
+
+    let previousMessages = [];
+
+    function getConverse() {
+    
+    let user = localStorage.getItem('name');
+
+
+    // AJAX POST isteği yap
+    fetch('/getConverse', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+
+            name: user
+})
+    })
+    .then(response => {
+        if (response.ok) {
+            
+            return response.json();
+         
+        } else {
+            // Hata durumunda
+            console.error('Hata:', response.status, response.statusText);
+            alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+        }
+    })
+    .then(data=>{
+        const homeList = document.querySelector('.inbox-message ul');
+
+            data.forEach((item)=>{
+
+                if (!previousMessages.includes(item.name)) {
+                console.log(item.name)
+                const liList = document.createElement('li');
+                liList.style.cursor = "pointer";
+                liList.innerHTML = `
+
+                            <a class="aele" href="#" >
+                                <div class="message-avatar" >
+                                    <img src="${item.img_name}" alt="">
+                                </div>
+                                <div class="message-body">
+                                    <div class="message-body-heading">
+                                        <h5>${item.name}</h5>
+                                       
+                                    </div>
+                                    
+                                </div>
+                            </a>
+                `;
+
+                homeList.appendChild(liList);
+                // Önceki mesajlar dizisine bu mesajı ekle
+                previousMessages.push(item.name);
+
+                homeList.querySelectorAll('li').forEach(li => {
+        li.addEventListener('click', function() {
+            const chatName = this.querySelector('.message-body-heading h5').textContent;
+            document.querySelector('#chatName').textContent = chatName;
+        });
+    });
+
+
+                var chatWindow = document.querySelector('#chatWindow');
+        var closeWindow = document.querySelector('#closeWindow');
+        var chatUsers = document.querySelectorAll('.inbox-message ul li');
+        
+
+        document.querySelector('#closeWindow').addEventListener('click', () => {
+            chatWindow .style.display = 'none';
+            
+            
+        });
+
+        
+        chatUsers.forEach(chatUser => {
+        chatUser.addEventListener('click', () => {
+        chatWindow.style.display = 'flex';
+        var messages = document.getElementById('messages2');
+        let userName = String(chatUser.querySelector('a .message-body .message-body-heading h5').textContent).trim()
+        const yourName = localStorage.getItem('name').trim(); // Kullanıcı adınızı al
+        localStorage.setItem('target', userName); // Hedef kullanıcı adını sakla
+       // Sunucuya kullanıcıyı tanıt
+        // sendData(userName); // sendData işlevini çağırarak hedef kullanıcı adını gönder
+        getOldMessages(userName,yourName);
+        var messages = document.getElementById('messages2');
+        messages.textContent = " ";
+        
+    });
+
+
+});
+
+            }
+        })
+    })
+    .catch(error => {
+        console.error('Hata:', error);
+        alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+    });
+
+}
+
+
+document.querySelector('#messageBox').addEventListener('click',()=>{
+    
+    getConverse();
+  
+})
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    getConverse();
+  
+})
+
+
+
+
+//     messageItems.forEach(item => {
+//     item.addEventListener('click', async function() {
+//         var messages = document.getElementById('messages2');
+//         let userName = this.querySelector('a .message-body .message-body-heading h5').textContent;
+//         const yourName = localStorage.getItem('name').trim(); // Kullanıcı adınızı al
+//         console.log(userName)
+//         localStorage.setItem('target', userName); // Hedef kullanıcı adını sakla
+//        // Sunucuya kullanıcıyı tanıt
+//         // sendData(userName); // sendData işlevini çağırarak hedef kullanıcı adını gönder
+//         await getOldMessages(userName,yourName);
+//         var messages = document.getElementById('messages2');
+//         messages.textContent = " ";
+//         console.log('yeni kullaniciya tiklanildi' + ' ' + userName);
+        
+//     }.bind(item)); // burada item'ı bağlamak için bind kullanıyoruz
+// });
+
+
+    
+
+
+
+
+
+
+
+//     messageItems.forEach(item => {
+//     item.addEventListener('click', async function() {
+//         let userName = this.querySelector('a .message-body .message-body-heading h5').textContent;
+//         let yourName = localStorage.getItem('name').trim();
+//         socket.emit('join', { username: yourName});
+//         await sendData(userName, yourName);
+//         localStorage.setItem('target', userName)
+//         var messages = document.getElementById('messages2');
+//         messages.textContent = " ";
+//         console.log('yeni kullaniciya tiklanildi'+' '+userName);
+//     }.bind(item)); // burada item'ı bağlamak için bind kullanıyoruz
+// });
+
+
+// function sendData(userName) {
+//     input.addEventListener('keypress', function(e) {
+//         if (e.key === 'Enter') {
+//             const inputValue = input.value.trim();
+//             const yourName = localStorage.getItem('name').trim(); // Kullanıcı adınızı al
+//             socket.emit('newMessage', { username: userName, message: inputValue, yourname: yourName });
+//             showMessage('sen', inputValue, yourName, userName);
+//         }
+//     });
+// }
+
+// async function sendData(userName, yourName) {
+    
+//         fetch('/getUserId', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({
+//             userName: userName,
+//             yourName: yourName
+//         })
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         return response.json();
+//     })
+//     .then(data => {
+//         var userId = data.userName;
+//         var yourId = data.yourName;
+//         getOldMessages(yourId, userId, yourName, userName);
+//         console.log(userId + ' ' + 'yeni kullanici id');
+    
+//         input.addEventListener('keypress', function(e) {
+//             if (e.key === 'Enter') {
+//                 e.preventDefault();
+//                 const inputValue = input.value.trim();
+                
+//                     socket.emit('chat', { msg: inputValue, receiver: userId,roomId:yourId, sender: yourId, yourName: yourName, userName: userName });
+//                     showMessage('sen', inputValue, yourName, userName);
+//                     input.value = '';
+                
+//             }
+//         });
+    
+//         // socket.emit('join', { roomId:yourId });
+//     })
+//     .catch(error => {
+//         console.error('There was a problem with the fetch operation:', error);
+//     });
+    
+//     }
+    
+    
+
+
+
+
+
+// async function sendData(userName, yourName) {
+    
+//     fetch('/getUserId', {
+//     method: 'POST',
+//     headers: {
+//         'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//         userName: userName,
+//         yourName: yourName
+//     })
+// })
+// .then(response => {
+//     if (!response.ok) {
+//         throw new Error('Network response was not ok');
+//     }
+//     return response.json();
+// })
+// .then(data => {
+//     var userId = data.userName;
+//     var yourId = data.yourName;
+//     getOldMessages(yourId, userId, yourName, userName);
+//     console.log(userId + ' ' + 'yeni kullanici id');
+
+//     input.addEventListener('keypress', function(e) {
+//         if (e.key === 'Enter') {
+//             e.preventDefault();
+//             const inputValue = input.value.trim();
+            
+//                 socket.emit('chat', { msg: inputValue, receiver: userId,roomId:yourId, sender: yourId, yourName: yourName, userName: userName });
+//                 showMessage('sen', inputValue, yourName, userName);
+//                 input.value = '';
+            
+//         }
+//     });
+
+//     // socket.emit('join', { roomId:yourId });
+// })
+// .catch(error => {
+//     console.error('There was a problem with the fetch operation:', error);
+// });
+
+// }
+
+
+
+//  function attachMessageListeners(userId, yourId, yourName, userName) {
+//     var form = document.querySelector('#form');
+//     form.addEventListener('click', function() {
+//         const inputValue = input.value.trim();
+        
+//             socket.emit('chat', { msg: inputValue, receiver: userId,roomId:yourId, sender: yourId, yourName: yourName, userName: userName });
+//             showMessage('sen', inputValue, yourName, userName);
+//             input.value = '';
+        
+//     });
+
+//     input.addEventListener('keypress', function(e) {
+//         if (e.key === 'Enter') {
+//             e.preventDefault();
+//             const inputValue = input.value.trim();
+//             if (inputValue != '') {
+//                 socket.emit('chat', { msg: inputValue, receiver: userId,roomId:yourId, sender: yourId, yourName: yourName, userName: userName });
+//                 showMessage('sen', inputValue, yourName, userName);
+//                 input.value = '';
+//             }
+//         }
+//     });
+// }
+
+
+
+// anlik mesajlasma dinleyicisi
+// socket.on('newMessage', (data) => {
+//         showMessage('moment', data.message, data.yourname, data.username);
+//         console.log(data.message+' '+'DATA MESAJ')
+        
+//     });
+  
+
+
+
+
+
+ 
+
+//-------------------------
+
+
+
+
+
+</script>
+
+
+<script>
+    var messageItems2 = document.querySelectorAll('.inbox-message ul li');
+
+messageItems2.forEach(item => {
+    item.addEventListener('click', function() {
+        const chatName = this.querySelector('.message-body-heading h5').textContent;
+        document.querySelector('#chatName').textContent = chatName;
+    })
+})
+
+    </script>
+
+
+
+
+<script>
+        var chatWindow = document.querySelector('#chatWindow');
+        var closeWindow = document.querySelector('#closeWindow');
+        var chatUsers = document.querySelectorAll('.inbox-message ul li');
+        
+
+        document.querySelector('#closeWindow').addEventListener('click', () => {
+            chatWindow .style.display = 'none';
+            
+        });
+
+        
+        chatUsers.forEach(chatUser => {
+        chatUser.addEventListener('click', () => {
+        chatWindow.style.display = 'flex';
+        
+    });
+});
+</script>
+
+
+   
+
+
+    <script>
+        var messageBig = document.querySelector('#messageBig');
+        var messageBox = document.querySelector('#messageBox');
+
+        document.querySelector('#closeMessage').addEventListener('click', () => {
+            // messageBig.style.display = 'none';
+            // messageBox.style.display = 'flex';
+            window.location = '/';
+        });
+
+        
+        document.querySelector('#messageBox').addEventListener('click', () => {
+            messageBig.style.display = 'flex';
+            messageBox.style.display = 'none';
+        });
+    </script>
+
+
