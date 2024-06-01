@@ -1,0 +1,601 @@
+<script>
+    // Token kontrolü
+
+document.addEventListener('DOMContentLoaded', function() {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+        // Token varsa profil sayfasına yönlendir
+        window.location.href = '/login';
+    } 
+})
+
+
+</script>
+
+<%- include('./partials/_header2.ejs') %>
+<body>
+    <%- include('./partials/_navbar.ejs') %>
+    <div class="row py-5 px-4"> 
+        <div class=" mx-auto"  > <!-- Profile widget --> 
+            <div class="bg-white shadow rounded overflow-hidden">
+                 <div class="px-4 pt-0 pb-4 cover"> 
+                    <div class="media align-items-end profile-head" style="display: flex; flex-direction: row;"> 
+                        <div class="profile propp mr-3">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                            <br>
+                            <a href="#" class="btn btn-outline-dark btn-sm btn-block m-3" style="border: 1px solid rgb(5, 15, 33); color: rgb(5, 15, 33);" onclick="editProfile()">Edit profile</a>
+                        </div> 
+                        <div class="media-body mb-5 text-white" style="margin-left: 30px;"> 
+                            <h4 class="mt-0 mb-0" > </h4>
+                             <p class="small mb-4"> 
+                                <i class="fas fa-map-marker-alt mr-2"></i><span></span></p> 
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="bg-light p-4 d-flex justify-content-end text-center"> 
+                        <ul class="list-inline mb-0">
+                             <!-- <li class="list-inline-item">
+                                 <h5 class="font-weight-bold mb-0 d-block">2</h5>
+                                 <small class="text-muted"> İlanlarım</small>
+                                 </li> 
+                                 <li class="list-inline-item"> 
+                                    <h5 class="font-weight-bold mb-0 d-block">3</h5>
+                                    <small class="text-muted"> Begenilen</small> 
+                                </li> 
+                                <li class="list-inline-item"> 
+                                    <h5 class="font-weight-bold mb-0 d-block">11</h5>
+                                    <small class="text-muted"> 
+                                        
+                                        Mesajlasma</small> 
+                                </li>  -->
+                            </ul> 
+                            </div>
+                             <div class="px-4 py-3"> <h5 class="mb-0">Ben Kimim</h5>
+                                     <div class="p-4 rounded shadow-sm bg-light aboutDesc"> 
+                                        <p class="font-italic mb-0">Web Developer</p>
+                                         <!-- <p class="font-italic mb-0">Lives in New York</p> 
+                                         <p class="font-italic mb-0">Photographer</p>  -->
+                                        </div> 
+                                    </div>
+                                     <div class="py-4 px-4"> 
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                             <h5 class="mb-0">İlanlarım </h5>
+                                             <a href="/cat-find-partner" class="btn btn-link text-muted">Show all</a>
+                                             </div>
+                                              <div class="row allCard"> 
+                                              
+                                                <!--  -->
+
+
+                                                <script>
+                                                    document.addEventListener('DOMContentLoaded', function() {
+                                                        // Sayfa yüklendiğinde local storage'dan 'name' değerini al
+                                                    const value = localStorage.getItem('name');
+
+                                                        // Eğer 'name' değeri varsa ve boş değilse, fetch ile '/editProfile' endpoint'ine istek gönder
+                                                    
+                                                            fetch('/selectSharing', {
+                                                                method: 'POST',
+                                                                headers: {
+                                                                    'Content-Type': 'application/json'
+                                                                },
+                                                                body: JSON.stringify({
+                                                                name:value
+                                                                })
+                                                            })
+                                                            .then(response => {
+                                                                if (response.ok) {
+                                                                    return response.json();
+                                                                } else {
+                                                                    // Hata durumunda
+                                                                    console.error('Hata:', response.status, response.statusText);
+                                                                }
+                                                            })
+                                                            .then(data => {
+                                                                data.forEach(item => {
+                                                                    const title = item.title;
+                                                                    const desc = item.description;
+                                                                    const img_name = item.img_name;
+                                                                    showScreen(title, desc, img_name);
+                                                                });
+                                                                
+                                                            })
+                                                            .catch(error => {
+                                                                // Hata durumunda
+                                                                console.error('Hata:', error);
+                                                            });
+                                                        
+                                                    });
+
+
+
+                                                    function showScreen(title, desc, img_name) {
+                                                        // Yeni bir div elementi oluştur
+                                                        const newDiv = document.createElement('div');
+                                                        newDiv.classList.add('col-md-6', 'col-lg-4');
+
+                                                        const maxDescLength = 50;
+                                                        let shortenedDesc = desc.substring(0, maxDescLength);
+                                                        if (desc.length > maxDescLength) {
+                                                            shortenedDesc += '...'; // Add ellipsis if truncated
+                                                        }
+                                                        
+                                                        // Yeni içerik oluştur
+                                                        const newContent = `
+                                                            <div class="pet-item wow setti fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
+                                                                <div class="pet-img">
+                                                                    <img style="width: 100%; height: 100%;" src="assets/img/sharing1/${img_name}" alt>
+                                                                </div>
+                                                                <div class="pet-content">
+                                                                    <h4>${title}</h4>
+                                                                    <h6><a href="#">${shortenedDesc}</a></h6>
+                                                                    <hr>
+                                                                    <a class="btn btn-success" style="width:75%; color:#fff;" onclick="detail('${title}')">More</a>
+                                                                    <a class="btn btn-warning" style="width:10%; color:#fff;" onclick="edit('${title}')"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                                    <a class="btn btn-danger" style="width:10%; color:#fff;" onclick="remove('${title}')"><i class="fa-solid fa-trash"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        `;
+                                                        
+                                                        // Yeni içeriği yeni div içine yerleştir
+                                                        newDiv.innerHTML = newContent;
+
+                                                        
+                                                        
+                                                        // Yeni oluşturulan div'i allCard elementine ekle
+                                                        const allCardDiv = document.querySelector('.allCard');
+                                                        allCardDiv.appendChild(newDiv);
+
+                                                        
+                                                    }
+
+
+
+
+
+
+
+                                                    function edit(value) {
+
+                                                        fetch('/selectSharing', {
+                                                                method: 'POST',
+                                                                headers: {
+                                                                    'Content-Type': 'application/json'
+                                                                },
+                                                                body: JSON.stringify({
+                                                                value:value
+                                                                })
+                                                            })
+                                                            .then(response => {
+                                                                if (response.ok) {
+                                                                    return response.json();
+                                                                } else {
+                                                                    // Hata durumunda
+                                                                    console.error('Hata:', response.status, response.statusText);
+                                                                }
+                                                            })
+                                                            .then(data => {
+                                                                data.forEach(item => {
+                                                                    const title = item.title;
+                                                                    const desc = item.description;
+                                                                    const img_name = item.img_name;
+                                                                    
+                                                                    if (isButtonClicked) {
+                                                        return;
+                                                        }
+
+                                                        isButtonClicked = true;
+
+
+                                                        var formContent = `
+
+                                                        <section class="get-in-touch">
+                                                            <h1 class="title">Edit </h1>
+                                                            <form class="contact-form row">
+                                                                <div class="form-field col-lg-12">
+                                                                    <input id="editTitle" class="input-text js-input" type="text" placeholder="${title}" required>
+                                                                    <label class="label" for="title">Title</label>
+                                                                </div>
+
+                                                                <div class="form-field col-lg-12">
+                                                                    <input id="editDesc" class="input-text js-input" type="text" placeholder="${desc}" required>
+                                                                    <label class="label" for="desc">Description</label>
+                                                                </div>
+                                                                
+                                                               
+                                                                
+                                                                <div class="form-field col-lg-12">
+                                                                    <button  id="btt"  class="submit-btn">Submit</button>
+                                                                </div>
+                                                            </form>
+                                                            </section>
+
+                                                        `;
+                                               
+                                                          
+
+                                                        alertify.getDialog(formContent, '').set('selector', 'input[type="text"]');
+                                                        isButtonClicked = false;
+
+
+                                                        const btt = document.getElementById('btt')
+                                                        if(btt){
+                                                            btt.addEventListener('click', function() {
+                                                            
+                                                            // Formdaki değerleri al
+                                                            const editTitle = document.getElementById('editTitle').value;
+                                                            const editDesc = document.getElementById('editDesc').value;
+                                                            const oldTitle = title;
+                                                            const userName = localStorage.getItem('name');
+                                                            const imgInput = document.getElementById('editImg');
+                                                            // const imgFile = imgInput.files[0]; // dosya seçiminden dosyayı al
+
+                                                            // FormData objesi oluştur
+                                                            const formData = {
+                                                                user:userName,
+                                                                title: editTitle,
+                                                                desc: editDesc,
+                                                                old: oldTitle
+                                                            };
+                                                            
+                                                            
+
+                                                            // edit2 fonksiyonunu çağır ve formData objesini parametre olarak gönder
+                                                            edit2(formData,);
+
+                                                        });
+                                                        }
+                                                                });
+                                                                
+                                                            })
+                                                            .catch(error => {
+                                                                // Hata durumunda
+                                                                console.error('Hata:', error);
+                                                            });
+
+                                                        }
+
+
+
+                                                        function edit2(formData) {
+                                                           
+                                                            console.log(formData)
+                                                            // fetch ile POST isteği gönder
+                                                            fetch('/editPost', {
+                                                                method: 'POST',
+                                                                headers: {
+                                                                    'Content-Type': 'application/json'
+                                                                },
+                                                                body: JSON.stringify({
+                                                                formData:formData
+                                                                })
+                                                            })
+                                                            .then(response => {
+                                                                if (response.ok) {
+                                                                    return response.json();
+                                                                } else {
+                                                                    // Hata durumunda
+                                                                    console.error('Hata:', response.status, response.statusText);
+                                                                }
+                                                            })
+                                                            .then(data => {
+                                                                // Başarılı işlem sonrası yapılabilecek işlemler
+                                                                console.log('Başarılı:', data);
+                                                            })
+                                                            .catch(error => {
+                                                                // Hata durumunda
+                                                                console.error('Hata:', error);
+                                                            });
+                                                        }
+
+
+
+
+                                                        function remove(value) {
+
+                                                            const conf = confirm('Silmek istediginize emin misiniz?');
+                                                            if(conf == true){
+                                                                console.log(value)
+                                                           const user = localStorage.getItem('name');
+                                                           // fetch ile POST isteği gönder
+                                                           fetch('/removePost', {
+                                                               method: 'POST',
+                                                               headers: {
+                                                                   'Content-Type': 'application/json'
+                                                               },
+                                                               body: JSON.stringify({
+                                                               old:value,
+                                                               user:user
+                                                               })
+                                                           })
+                                                           .then(response => {
+                                                               if (response.ok) {
+                                                                   return response.json();
+                                                               } else {
+                                                                   // Hata durumunda
+                                                                   console.error('Hata:', response.status, response.statusText);
+                                                               }
+                                                           })
+                                                           .then(data => {
+                                                               // Başarılı işlem sonrası yapılabilecek işlemler
+                                                               console.log('Başarılı:', data);
+                                                               window.location.href = window.location.href
+                                                           })
+                                                           .catch(error => {
+                                                               // Hata durumunda
+                                                               console.error('Hata:', error);
+                                                           });
+                                                            }
+                                                           
+                                                           
+                                                       }
+
+
+
+
+
+                                                    function detail(value) {
+
+                                                    fetch('/selectSharing', {
+                                                            method: 'POST',
+                                                            headers: {
+                                                                'Content-Type': 'application/json'
+                                                            },
+                                                            body: JSON.stringify({
+                                                            value:value
+                                                            })
+                                                        })
+                                                        .then(response => {
+                                                            if (response.ok) {
+                                                                return response.json();
+                                                            } else {
+                                                                // Hata durumunda
+                                                                console.error('Hata:', response.status, response.statusText);
+                                                            }
+                                                        })
+                                                        .then(data => {
+                                                            data.forEach(item => {
+                                                                const title = item.title;
+                                                                const desc = item.description;
+                                                                const img_name = item.img_name;
+                                                                
+                                                                if (isButtonClicked) {
+                                                    return;
+                                                    }
+
+                                                    isButtonClicked = true;
+
+
+                                                    var formContent = `
+
+                                                    <section class="get-in-touch" style="border:1px solid grey; padding:10px;">
+                                                    <h1 class="title">${title}</h1>
+                                                    <div class="d-flex justify-content-between align-items-center" style="flex-direction:column;">
+                                                    <div class="pet-img" style="width:40%;margin-bottom:25px;">
+                                                                <img style="width: 100%; height: 10%;" src="assets/img/sharing1/${img_name}" alt>
+                                                            </div>
+                                                    <p style="width:95%;" >${desc}</p>
+                                                    </div>
+
+
+                                                    </section>
+
+                                                    `;
+
+                                                    alertify.getDialog(formContent, '').set('selector', 'input[type="text"]');
+                                                    isButtonClicked = false;
+
+                                                            });
+                                                            
+                                                        })
+                                                        .catch(error => {
+                                                            // Hata durumunda
+                                                            console.error('Hata:', error);
+                                                        });
+
+
+
+
+
+
+
+                                                    }
+
+                                                </script>
+
+
+
+
+                                            </div> 
+                                        </div>
+                                     </div>
+                                    </div>
+</div>
+
+
+
+
+
+
+<script>
+   
+    function editProfile() {
+if (isButtonClicked) {
+    return;
+}
+
+isButtonClicked = true;
+
+
+var formContent = `
+   
+<section class="get-in-touch">
+   <h1 class="title">Edit Profile </h1>
+   <form class="contact-form row">
+      <div class="form-field col-lg-6">
+         <input id="name" class="input-text js-input" type="text" required>
+         <label class="label" for="name">İsim</label>
+      </div>
+      <div class="form-field col-lg-6 ">
+         <input id="email" class="input-text js-input" type="email" required>
+         <label class="label" for="email">E-mail</label>
+      </div>
+
+      <div class="form-field col-lg-6">
+         <input id="password" class="input-text js-input" type="password" required>
+         <label class="label" for="password">Şifre</label>
+      </div>
+
+      <div class="form-field col-lg-6">
+         <input id="city" class="input-text js-input" type="text" required>
+         <label class="label" for="city">Şehir</label>
+      </div>
+      
+      <div class="form-field col-lg-12">
+         <input id="about" class="input-text js-input" type="text" required>
+         <label class="label" for="message">Hakkımda</label>
+      </div>
+      <div class="form-field col-lg-12">
+         <select id="opti" class="input-text js-input" required>
+            <option value="https://bootdey.com/img/Content/avatar/avatar1.png">Avatar1</option>
+            <option value="https://bootdey.com/img/Content/avatar/avatar2.png">Avatar2</option>
+            <option value="https://bootdey.com/img/Content/avatar/avatar3.png">Avatar3</option>
+            <option value="https://bootdey.com/img/Content/avatar/avatar4.png">Avatar4</option>
+            <option value="https://bootdey.com/img/Content/avatar/avatar5.png">Avatar5</option>
+            <option value="https://bootdey.com/img/Content/avatar/avatar6.png">Avatar6</option>
+            </select>
+      </div>
+      <div class="form-field col-lg-12">
+        <button  id="btt" class="submit-btn">Submit</button>
+      </div>
+   </form>
+</section>
+
+`;
+
+alertify.getDialog(formContent, '').set('selector', 'input[type="text"]');
+isButtonClicked = false;
+
+
+
+
+const submitBtn = document.querySelector('.submit-btn');
+
+if(submitBtn){
+    submitBtn.addEventListener('click', () => {
+    // event.preventDefault(); // Sayfa yenilemeyi engelle
+        
+    const userName = localStorage.getItem('name');
+
+    // Form alanlarından değerleri al
+    const name = document.getElementById('name').value;
+    const city = document.getElementById('city').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const about = document.getElementById('about').value;
+    const selectedAvatar = document.getElementById('opti').value; // Seçilen avatar seçeneğinin değerini al
+
+
+    if (!name || !city || !email || !password || !about || !selectedAvatar) {
+                alert('Lütfen tüm alanları doldurunuz!');
+                return; // Eğer bir alan boşsa, işlemi durdur
+            }
+
+
+    console.log(selectedAvatar)
+    // AJAX POST isteği yap
+    fetch('/editProfile', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            user: userName,
+            city: city,
+            email: email,
+            password: password,
+            about: about,
+            avatar: selectedAvatar // Seçilen avatar URL'sini gönder
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            // Başarılı yanıt durumunda
+            console.log('Cevap:', response);
+            alert('Profiliniz başarıyla güncellendi!');
+            localStorage.setItem('name', name);
+        } else {
+            // Hata durumunda
+            console.error('Hata:', response.status, response.statusText);
+            alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+        }
+    })
+    .catch(error => {
+        console.error('Hata:', error);
+        alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+    });
+ });
+}
+
+}
+
+</script>
+
+<script>
+
+    // FETCH USER DATA
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    // Sayfa yüklendiğinde local storage'dan 'name' değerini al
+    const userName = localStorage.getItem('name');
+
+    // Eğer 'name' değeri varsa ve boş değilse, fetch ile '/editProfile' endpoint'ine istek gönder
+    if (userName) {
+        fetch('/selectProfile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: userName
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                // Hata durumunda
+                console.error('Hata:', response.status, response.statusText);
+            }
+        })
+        .then(data => {
+            console.log('Kullanıcı bilgileri:', data);
+            const nameUser = document.querySelector('.text-white h4');
+            const city = document.querySelector('.text-white p span');
+            const aboutDesc = document.querySelector('.aboutDesc p');
+            const profil = document.querySelector('.propp img');
+            nameUser.textContent = data.name;
+            aboutDesc.textContent = data.description;
+            aboutDesc.textContent = data.description;
+            city.textContent = data.city;
+            profil.src = data.imgName
+            
+        })
+        .catch(error => {
+            // Hata durumunda
+            console.error('Hata:', error);
+        });
+    }
+});
+
+
+</script>
+
+
+
+
+<%- include('./partials/_chat.ejs') %>
+
+<%- include('./partials/_footer.ejs') %>

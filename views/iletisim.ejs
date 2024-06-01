@@ -1,0 +1,235 @@
+<%- include('./partials/_header.ejs') %>
+
+<body class="home-3">
+    <div class="preloader">
+        <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <%- include('./partials/_navbar.ejs') %>
+
+    <main class="main">
+
+        <div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">
+            <div class="container">
+                <h2 class="breadcrumb-title">Bize Ulaşın</h2>
+                <ul class="breadcrumb-menu">
+                    <li><a href="index.html">Anasayfa</a></li>
+                    <li class="active">Bize Ulaşın</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="contact-area py-120">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <div class="row">
+                        <div class="col-lg-8 align-self-center">
+                            <div class="contact-form">
+                                <div class="contact-form-header">
+                                    <h2>Bize Ulaşın</h2>
+                                    <p>Soru ve önerileriniz için Sosyal Pati ile iletişime geçmek için bizimle temas kurun. Memnuniyetle size yardımcı olacak olan ekibimize ulaşmak için iletişim bilgilerimizi kullanabilirsiniz. Sosyal Pati, kullanıcı geri bildirimlerini önemser ve platformumuzu geliştirmek için sizin düşüncelerinizi duymaktan mutluluk duyar. İhtiyaçlarınızı ve önerilerinizi paylaşmak için bize ulaşmaktan çekinmeyin.</p>
+                                </div>
+                                <form method="post" action=""
+                                    id="contact-form">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="name"
+                                                    placeholder="Ad-Soyad*" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" name="email"
+                                                    placeholder="E-Posta" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="subject"
+                                            placeholder="Konu" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="message" cols="30" rows="5" class="form-control"
+                                            placeholder="Mesajınız"></textarea>
+                                    </div>
+                                    <button type="submit" class="theme-btn">Gönder<i class="far fa-paper-plane"></i></button>
+                                    <div class="col-md-12 mt-3">
+                                        <div class="form-messege text-success"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="contact-content">
+                                <div class="contact-info">
+                                    <div class="contact-info-icon">
+                                        <i class="fal fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="contact-info-content">
+                                        <h5>Ofis Adresi</h5>
+                                        <p>Üniversite Caddesi, No:37-39, Ağaçlı Yol, Bornova, İzmir PK. 35100</p>
+                                    </div>
+                                </div>
+                                <div class="contact-info">
+                                    <div class="contact-info-icon">
+                                        <i class="fal fa-phone"></i>
+                                    </div>
+                                    <div class="contact-info-content">
+                                        <h5>Telefon</h5>
+                                        <p>(0232) 570 7070</p>
+                                    </div>
+                                </div>
+                                <div class="contact-info">
+                                    <div class="contact-info-icon">
+                                        <i class="fal fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-info-content">
+                                        <h5>E-Posta</h5>
+                                        <p><a href=""
+                                                class="__cf_email__">team@sosyalpati.com</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="contact-info">
+                                    <div class="contact-info-icon">
+                                        <i class="fal fa-clock"></i>
+                                    </div>
+                                    <div class="contact-info-content">
+                                        <h5>Saatlerimiz</h5>
+                                        <p>Pazartesi - Cumartesi (09.00 - 18.30)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6247.914637285578!2d27.21039025869141!3d38.465546654834654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b97d928fa5629b%3A0x81b9e2455ebd80cc!2zS8O8w6fDvGtwYXJr!5e0!3m2!1str!2str!4v1707588538661!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </main>
+
+    <footer class="footer-area">
+        <div class="footer-widget">
+            <div class="container">
+                <div class="row footer-widget-wrapper pt-100 pb-70">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="footer-widget-box about-us">
+                            <a href="#" class="footer-logo">
+                                <img src="assets/img/logo/logo-light.png" alt>
+                            </a>
+                            <p class="mb-4">
+                                Sosyal Pati, sadece istediğin cins köpek veya kediye ev sahibi olmanın ötesinde, 
+                                hayatına neşe katacak, tüylü bir dost edinmenin kapılarını aralıyor. Ayrıca, 
+                                patili arkadaşının sosyal çevresini genişletecek, ona eğlenceli anlar yaşatacak
+                                oyun arkadaşlarını da burada bulabilirsin. Hemen şimdi üye ol, bu eşsiz deneyimi
+                                yaşa ve hayatına renk kat! 🐾✨
+                            </p>
+                            <ul class="footer-contact">
+                                <li><a href="tel:+21236547898"><i class="far fa-phone"></i>(0232) 570 7070</a></li>
+                                <li><i class="far fa-map-marker-alt"></i>Üniversite Caddesi, No:37-39, Ağaçlı Yol, Bornova, İzmir PK. 35100
+                                </li>
+                                <li><a href=""><i class="far fa-envelope"></i><span class="__cf_email__"
+                                            data-cfemail="b0d9ded6dff0d5c8d1ddc0dcd59ed3dfdd">team@sosyalpati.com</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <div class="footer-widget-box list">
+                            <h4 class="footer-widget-title">Kurumsal</h4>
+                            <ul class="footer-list">
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Hakkımızda</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Açık Rıza Metni</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Kullanıcı Sözleşmesi</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> KVKK Metni</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> İletişim</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <div class="footer-widget-box list">
+                            <h4 class="footer-widget-title">Kedi</h4>
+                            <ul class="footer-list">
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Kedi Sahiplenme</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Kedi Eş Bul</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Kedi Cinsleri</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <div class="footer-widget-box list">
+                            <h4 class="footer-widget-title">Köpek</h4>
+                            <ul class="footer-list">
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Köpek Sahiplenme</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Köpek Eş Bul</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Köpek Cinsleri</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <div class="footer-widget-box list">
+                            <h4 class="footer-widget-title">Bülten</h4>
+                            <div class="footer-newsletter">
+                                <p>En Son Güncelleme ve Haberleri Almak İçin Bültenimize Abone Olun</p>
+                                <div class="subscribe-form">
+                                    <form action="#">
+                                        <input type="email" class="form-control" placeholder="Mail Adresiniz">
+                                        <button class="theme-btn" type="submit">
+                                            Abone Ol <i class="far fa-paper-plane"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 align-self-center">
+                        <p class="copyright-text">
+                            &copy; Copyright <span id="date"></span> <a href="#"> Sosyal Pati </a> Telif Hakkı. Her hakkı
+                            saklıdır.
+                        </p>
+                    </div>
+                    <div class="col-md-6 align-self-center">
+                        <ul class="footer-social">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" id="scroll-top"><i class="far fa-angle-up"></i></a>
+
+    <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/modernizr.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/jquery.appear.min.js"></script>
+    <script src="assets/js/jquery.easing.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/counter-up.js"></script>
+    <script src="assets/js/masonry.pkgd.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

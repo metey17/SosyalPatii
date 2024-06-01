@@ -1,0 +1,305 @@
+<%- include('./partials/_header2.ejs') %>
+
+<body class="home-3">
+    <div class="preloader">
+        <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <%- include('./partials/_navbar.ejs') %>
+    <main class="main">
+
+        <div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">
+            <div class="container">
+                <h2 class="breadcrumb-title">Blog</h2>
+                <ul class="breadcrumb-menu">
+                    <li><a href="index.html">Anasayfa</a></li>
+                    <li class="active">Blog</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="blog-area py-120" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mx-auto wow fadeInDown" data-wow-duration="1s" data-wow-delay=".25s">
+                        <div class="site-heading text-center">
+                            <span class="site-title-tagline">Blog</span>
+                            <h2 class="site-title">Size bilgi <span>veriyoruz</span></h2>
+                            <div class="heading-divider"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" d-flex align-items-center homeBlog" style="flex-direction: row; flex-wrap: wrap; ">
+
+
+                    <!-- <div class="col-md-6 col-lg-4">
+                        <div class="blog-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
+                            <div class="blog-item-img">
+                                <img src="assets/img/blog/01.jpg" alt="Thumb">
+                            </div>
+                            <div class="blog-item-info">
+                                <h4 class="blog-title">
+                                    <a href="blog-detay.html">Ücretsiz Cins Kedi Sahiplendirme ve Sahiplenme</a>
+                                </h4>
+                                <div class="blog-item-meta">
+                                    <ul>
+                                        <li><a href="#"><i class="far fa-user-circle"></i> Akın Çenet</a></li>
+                                        <li><a href="#"><i class="far fa-calendar-alt"></i> 24.12.2023</a></li>
+                                    </ul>
+                                </div>
+                                <p>
+                                    Cins Kedi Sahiplendirme Nedir?; Cins Kedi Sahiplendirme, bir türe özgü olan kedinin bir aile tarafından başka bir aileye iyi bakılmak üzere verilmesidir, aileler çeşitli konularda uzlaşarak sevgi dolu yumurcağa iyi...
+                                </p>
+                                <a class="theme-btn" href="blog-detay.html">Daha Fazla<i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div> -->
+              
+
+                </div>
+
+
+
+
+                
+
+                
+                <div class="pagination-area">
+                    <div aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <!-- <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true"><i class="far fa-angle-double-left"></i></span>
+                                </a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true"><i class="far fa-angle-double-right"></i></span>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
+
+    <script>
+        // Sayfa yüklendiğinde blogları al ve kartları oluştur
+    document.addEventListener('DOMContentLoaded', () => {
+        getBlogPosts();
+    });
+    
+    // "/getBlog" endpoint'ine yapılan isteği işleyen fonksiyon
+    // function getBlogPosts() {
+    //     fetch('/getBlog', {
+    //         method: 'POST', // Get isteği gönder
+    //         headers: {
+    //             'Content-Type': 'application/json' // İçerik tipini belirt
+    //         },
+    //     })
+    //     .then(response => response.json()) // Gelen yanıtı JSON olarak dönüştür
+    //     .then(data => {
+    //         // Blog kartlarını oluştur
+    //         createBlogCards(data);
+    //     })
+    //     .catch(error => console.error('Hata:', error)); // Hata durumunda konsola hata mesajını yazdır
+    // }
+    
+    // // Blog kartlarını oluşturan fonksiyon
+    // function createBlogCards(blogData) {
+    //     const blogContainer = document.querySelector('.homeBlog'); // Blog kartlarının ekleneceği div'i seç
+    
+    //     // Her bir blog için kart oluştur
+    //     blogData.forEach(blog => {
+    //         // Blog kartı elementlerini oluştur
+    
+    //         const dateObj = new Date(blog.date);
+    //     const day = dateObj.getDate();
+    //     // Ay bilgisi 0'dan başladığı için 1 ekleyerek alıyoruz
+    //     const month = dateObj.getMonth() + 1;
+    //     const year = dateObj.getFullYear();
+    
+    //     // Tarihi istediğimiz formatta oluştur
+    //     const formattedDate = `${day}.${month}.${year}`;
+    
+    
+    //         let shortDescription = blog.description;
+    //     if (shortDescription.length > 200) {
+    //         shortDescription = shortDescription.substring(0, 200) + '...';
+    //     }
+    
+    //         const blogItem = document.createElement('div');
+    //         blogItem.classList.add('col-md-6', 'col-lg-4');
+    //         blogItem.innerHTML = `
+    //             <div class="blog-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s" style="height:100%;">
+    //                 <div class="blog-item-img">
+    //                     <img style="height:100%;" src="assets/img/blog/01.jpg" alt="Thumb">
+    //                 </div>
+    //                 <div class="blog-item-info">
+    //                     <h4 class="blog-title">
+    //                         <a href="blog-detay.html">${blog.title}</a>
+    //                     </h4>
+    //                     <div class="blog-item-meta">
+    //                         <ul>
+    //                             <li><a href="#"><i class="far fa-user-circle"></i> ${blog.author}</a></li>
+    //                             <li><a href="#"><i class="far fa-calendar-alt"></i> ${formattedDate}</a></li>
+    //                         </ul>
+    //                     </div>
+    //                     <p>${shortDescription}</p>
+    //                     <a class="theme-btn" href="/blog-detail">Daha Fazla<i class="fas fa-arrow-right"></i></a>
+    //                 </div>
+    //             </div>
+    //         `;
+    //         blogContainer.appendChild(blogItem); // Blog kartını ana div'e ekle
+    
+    //         blogItem.addEventListener('click', ()=>{
+    //             localStorage.setItem('blogName',blog.title)
+    //         })
+    //     });
+    // }
+    
+    
+    
+    
+    // "/getBlog" endpoint'ine yapılan isteği işleyen fonksiyon
+    function getBlogPosts() {
+        fetch('/getBlog', {
+            method: 'POST', // Post isteği gönder
+            headers: {
+                'Content-Type': 'application/json' // İçerik tipini belirt
+            },
+        })
+        .then(response => response.json()) // Gelen yanıtı JSON olarak dönüştür
+        .then(data => {
+            // Blog kartlarını oluştur
+            createBlogCards(data);
+            renderPagination(data);
+            changePage(1,data)
+      
+            // Sayfalama için pagination alanını güncelle
+            
+        })
+        .catch(error => console.error('Hata:', error)); // Hata durumunda konsola hata mesajını yazdır
+    }
+    
+    // Sayfalama için pagination düğmelerini oluştur
+    function renderPagination(data) {
+        const paginationContainer = document.querySelector('.pagination');
+        
+        // Veri sayısına göre sayfa sayısını hesapla
+        const pageCount = Math.ceil(data.length / 6); // Her sayfada 6 veri var
+    
+        // Sayfa numaralarını oluştur ve HTML'e ekle
+        for (let i = 1; i <= pageCount; i++) {
+            const li = document.createElement('li');
+            li.classList.add('page-item');
+            if (i === 1) {
+                li.classList.add('active');
+            }
+            const link = document.createElement('a');
+            link.classList.add('page-link');
+            link.href = '#';
+            link.textContent = i;
+            link.addEventListener('click', () => {
+                // Sayfa değiştirme işlevini çağır
+                changePage(i, data);
+            });
+            li.appendChild(link);
+            paginationContainer.appendChild(li);
+        }
+    }
+    
+    // Sayfa değiştirme işlevi
+    function changePage(pageNumber, data) {
+        // Sayfa numarasına göre verileri al
+        const startIndex = (pageNumber - 1) * 6;
+        const endIndex = startIndex + 6;
+        const currentPageData = data.slice(startIndex, endIndex);
+    
+        // Sayfa numarasına göre blog kartlarını güncelle
+        createBlogCards(currentPageData);
+    
+        // Aktif sayfa düğmesini güncelle
+        const paginationItems = document.querySelectorAll('.pagination .page-item');
+        paginationItems.forEach(item => {
+            item.classList.remove('active');
+        });
+        paginationItems[pageNumber - 1].classList.add('active');
+    }
+    
+    
+
+    // Blog kartlarını oluşturan fonksiyon
+    function createBlogCards(blogData) {
+        const blogContainer = document.querySelector('.homeBlog'); // Blog kartlarının ekleneceği div'i seç
+        blogContainer.textContent = "";
+        // Her bir blog için kart oluştur
+        blogData.forEach(blog => {
+            // Blog kartı elementlerini oluştur
+    
+            const dateObj = new Date(blog.date);
+        const day = dateObj.getDate();
+        // Ay bilgisi 0'dan başladığı için 1 ekleyerek alıyoruz
+        const month = dateObj.getMonth() + 1;
+        const year = dateObj.getFullYear();
+    
+        // Tarihi istediğimiz formatta oluştur
+        const formattedDate = `${day}.${month}.${year}`;
+    
+    
+            let shortTitle = blog.title;
+        if (shortTitle.length > 50) {
+            shortTitle = shortTitle.substring(0, 20) + '...';
+        }
+    
+            const blogItem = document.createElement('div');
+            blogItem.classList.add('col-md-6', 'col-lg-4');
+            blogItem.innerHTML = `
+                <div class="blog-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s" style="height:100%;">
+                    <div class="blog-item-img">
+                        <img style="height:100%;" src="assets/img/blog/${blog.img_name}" alt="Thumb">
+                    </div>
+                    <div class="blog-item-info">
+                        <h4 class="blog-title">
+                            <a href="blog-detay.html">${shortTitle}</a>
+                        </h4>
+                        <div class="blog-item-meta">
+                            <ul>
+                                <li><a href="#"><i class="far fa-user-circle"></i> ${blog.author}</a></li>
+                                <li><a href="#"><i class="far fa-calendar-alt"></i> ${formattedDate}</a></li>
+                            </ul>
+                        </div>
+                        
+                        <a class="theme-btn" href="/blog-detail">Daha Fazla<i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            `;
+            blogContainer.appendChild(blogItem); // Blog kartını ana div'e ekle
+    
+            blogItem.addEventListener('click', ()=>{
+                localStorage.setItem('blogName',blog.title)
+            })
+        });
+    }
+    
+    
+    
+    </script>
+
+
+
+
+
+<%- include('./partials/_footer.ejs') %>

@@ -1,0 +1,686 @@
+<%- include('./partials/_header3.ejs') %>
+<body>
+    <%- include('./partials/_navbar.ejs') %>
+    <div class="row py-5 px-4" style="width: 100%; "> 
+        <div class=" mx-auto"  style="width: 100% "> <!-- Profile widget --> 
+            <div class="bg-white shadow rounded overflow-hidden" style="width: 100%">
+                 <div class="px-4 pt-0 pb-4 cover"> 
+                    <div class="media align-items-end profile-head"> 
+                        <div class="profile propp mr-3">
+                            <img src="../public/assets/img/logo/adminn.png" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                        </div> 
+                        <div class="media-body mb-5 text-white"> 
+                            <h4 class="mt-0 mb-0" > </h4>
+                             <p class="small mb-4"> 
+                                <i class="fas fa-map-marker-alt mr-2"></i><span></span></p> 
+                            </div> 
+                        </div> 
+                    </div> 
+
+                    <div class="bg-light p-4 d-flex justify-content-end text-center"> 
+                        <ul class="list-inline mb-0">
+                             <!-- <li class="list-inline-item">
+                                 <h5 class="font-weight-bold mb-0 d-block">2</h5>
+                                 <small class="text-muted"> İlanlarım</small>
+                                 </li> 
+                                 <li class="list-inline-item"> 
+                                    <h5 class="font-weight-bold mb-0 d-block">3</h5>
+                                    <small class="text-muted"> Begenilen</small> 
+                                </li> 
+                                <li class="list-inline-item"> 
+                                    <h5 class="font-weight-bold mb-0 d-block">11</h5>
+                                    <small class="text-muted"> 
+                                        
+                                        Mesajlasma</small> 
+                                </li>  -->
+                            </ul> 
+                            </div>
+                            
+                            <div style=" width: 100%;" >
+                                
+                                <div class="mx-4 my-3" id="selective">
+                                    <a class="btn btn-success choUse" style="color: #fff;">Kullanicilar</a>
+                                    <a  class="btn btn-primary choBlo" style="color: #fff;">Blog</a>
+                                </div>
+
+
+                 
+
+                                <!-- content-users -->
+
+                                
+
+                                <div class="impo " style="flex-direction: column; width:100% !important;  ">
+                                    
+                                   
+
+                                        <div class="row  d-flex justify-content-start align-items-center" style="width: 98% !important; margin: auto;">
+                    
+                                          <div >
+                    
+                                            <div class="search">
+                                              <i class="fa fa-search"></i>
+                                              <input type="text" class="form-control" oninput="search()" id="searchInput"  placeholder="Bir isim girin...">
+                                              <button class="btn btn-primary" onclick="search()">Search</button>
+                                            </div>
+                                            
+                                          </div>
+                                          
+                                        </div>
+                                   
+
+                                    <div class="px-4 col-md-offset-2 impo custyle" style="width:100% ;">
+                                        <table class="table table-striped custab" style="width:100% !important;">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>name</th>
+                                                    <th>mail</th>
+                                                    <th>password</th>
+                                                    <th>city</th>
+                                                    <th class="text-center">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="table-body" id="tableBody">
+                                                <!-- Veriler buraya gelecek -->
+                                            </tbody>
+                                        </table>
+                                        <div class="pagination" style="z-index: 10000;">
+                                            <!-- Sayfalama düğmeleri buraya gelecek -->
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                                <script>
+                                    function search() {
+                                        var input, filter, table, tr, td, i, txtValue;
+                                        input = document.getElementById("searchInput");
+                                        filter = input.value.toUpperCase();
+                                        table = document.getElementById("tableBody");
+                                        tr = table.getElementsByTagName("tr");
+                                
+                                        for (i = 0; i < tr.length; i++) {
+                                            td = tr[i].getElementsByTagName("td")[1]; // İkinci sütun (name) üzerinde arama yapar
+                                            if (td) {
+                                                txtValue = td.textContent || td.innerText;
+                                                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                                    tr[i].style.display = "";
+                                                } else {
+                                                    tr[i].style.display = "none";
+                                                }
+                                            }
+                                        }
+                                    }
+                                </script>
+                                
+
+                             
+                                <!-- content-users end -->
+
+
+                                <!-- content-blog -->
+
+                                <div class="container blogForm contact-form" style="display: none;">
+                                    <!-- <div class="contact-image">
+                                        <img src="../public/assets/img/logo/logo.png" alt="rocket_contact"/>
+                                    </div> -->
+                                    <form  enctype="multipart/form-data">
+                                        <h3>BLOG PAYLAŞ</h3>
+                                       <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text"  id="txtTitle" class="form-control" placeholder="Başlık *" value="" required/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" id="txtAuthor" class="form-control" placeholder="Yazar *" value="" required/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="file"  id="txtFile" class="form-control" placeholder="Resim *" value="" required/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <textarea id="txtMsg"  class="form-control" placeholder="Description *" style="width: 100%; height: 150px;" required></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <a id="btnSubmit" class="btnContact" style="color: #fff; text-align: center;"   required>Paylaş</a>
+                                            </div>
+                                            <p>Blogları paylaşımlarını görmek icin <a href="/blog" style="color: blue;">tıklayın...</a></p> 
+                                        </div>
+                                    </form>
+                        </div>
+
+
+
+
+
+
+                                <!-- content-blog end -->
+
+           
+
+
+
+                            </div>
+
+                        </div> 
+                     </div>
+                    </div>
+                </div>
+             </div>
+
+
+             <script>
+
+const submit = document.getElementById('btnSubmit');
+
+if(submit){
+    submit.addEventListener('click', ()=>{
+        console.log('tiklanildi')
+        const title = document.getElementById('txtTitle').value;
+    const author = document.getElementById('txtAuthor').value;
+    const file = document.getElementById('txtFile').files[0]; // İlk dosyayı seç
+    const msg = document.getElementById('txtMsg').value;
+
+    
+
+
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('author', author);
+    formData.append('msg', msg);
+    formData.append('file', file);
+//     if (file.files.length > 0) {
+//     // Eğer dosya seçildiyse, FormData'ya ekle
+    
+// }
+console.log('tiklanildi',title, author, msg, file)
+    fetch('/setBlog', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            // Hata durumunda
+            throw new Error('Network response was not ok');
+        }
+    })
+    .then(data => {
+       const alert =  confirm(data);
+       if(alert == true){
+        // window.location.reload();
+        document.getElementById('txtTitle').value = "";
+        document.getElementById('txtAuthor').value= "";
+        document.getElementById('txtFile').value = ""; // İlk dosyayı seç
+        document.getElementById('txtMsg').value = "";
+       }
+    })
+    .catch(error => {
+        console.error('Hata:', error);
+    });
+    })
+}
+
+
+
+             </script>
+
+
+
+
+
+             <script>
+                let user = document.querySelector('.impo');
+                let blogForm = document.querySelector('.blogForm');
+                let select1 = document.querySelector('#selective .choUse');
+                let select2 = document.querySelector('#selective .choBlo');
+
+                select1.addEventListener('click', ()=>{
+                    blogForm.style.display = "none";
+                    user.style.display = "flex";
+                })
+
+                select2.addEventListener('click', ()=>{
+                    blogForm.style.display = "block";
+                    user.style.display = "none";
+                })
+
+            </script>
+
+
+
+
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', getUsers(1));
+
+    function getUsers(i) {
+        fetch('/getUsers', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            renderTable(data, i);
+            renderPagination(data);
+        })
+        .catch(error => console.error('Hata:', error));
+    }
+
+    function renderTable(data,i) {
+        const pageSize = 10;
+        const tableBody = document.querySelector('.table-body');
+        tableBody.innerHTML = '';
+        // Sayfa numarası ve boyutunu al
+        const currentPage = i ;
+        const start = (currentPage - 1) * pageSize;
+        const end = start + pageSize;
+        const paginatedData = data.slice(start, end);
+
+        paginatedData.forEach((user, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${index+1}</td>
+                <td>${user.name}</td>
+                <td>${user.mail}</td>
+                <td><span style="cursor:pointer;" class="password" onclick="revealPassword(this)" data-password="${user.password}">${'*'.repeat(user.password.length)}</span></td>
+                <td>${user.city ? user.city : "No data"}</td>
+                <td class="text-center">
+                    <button class='btn btn-info btn-xs' onclick="handleEdit('${user.name}','${user.mail}','${user.password}','${user.city}')">Edit</button>
+                    <button class="btn btn-danger btn-xs" onclick="handleDelete('${user.name}')">Delete</button>
+                </td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+    function revealPassword(span) {
+    const password = span.getAttribute('data-password');
+    if (span.textContent === password) {
+        span.textContent = '*'.repeat(password.length);
+    } else {
+        span.textContent = password;
+    }
+}
+
+
+
+   function handleDelete(userName){
+        let verify = confirm('Bu kullaniciyi silmek istediginize emin misniz? Bu islem geri alinamaz!!!')
+
+        if(verify == true){
+            fetch('/deleteProfile', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            remove: userName
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            // Başarılı yanıt durumunda
+            console.log('Cevap:', response);
+            alert('Kullanici silme islemi basarili!');
+            getUsers(1);
+            
+        } else {
+            // Hata durumunda
+            console.error('Hata:', response.status, response.statusText);
+            alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+            
+        }
+    })
+    .catch(error => {
+        console.error('Hata:', error);
+        alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+    });
+        }
+
+        
+ 
+    }
+
+
+
+    function handleEdit(userName, mail, password, city) {
+    console.log(`Edit button clicked for user: ${userName}`);
+
+    if (isButtonClicked) {
+    return;
+}
+
+isButtonClicked = true;
+
+
+var formContent = `
+   
+<section class="get-in-touch">
+   <h1 class="title">Edit Profile </h1>
+   <form class="contact-form row">
+      <div class="form-field col-lg-6">
+         <input id="name" class="input-text js-input px-2" placeholder="${userName}" type="text" required>
+         <label class="label" for="name">İsim</label>
+      </div>
+      <div class="form-field col-lg-6 ">
+         <input id="email" class="input-text js-input px-2" placeholder="${mail}"  type="email" required>
+         <label class="label" for="email">E-mail</label>
+      </div>
+
+      <div class="form-field col-lg-6">
+         <input id="password" class="input-text js-input px-2" placeholder="${password}"  type="password" required>
+         <label class="label" for="password">Şifre</label>
+      </div>
+
+      <div class="form-field col-lg-6">
+         <input id="city" class="input-text js-input px-2" placeholder="${city}"  type="text" required>
+         <label class="label" for="city">Şehir</label>
+      </div>
+      
+      <div class="form-field col-lg-12">
+         <input id="about" class="input-text js-input" type="text" required>
+         <label class="label" for="message">Hakkımda</label>
+      </div>
+      <div class="form-field col-lg-12">
+         <select id="opti" class="input-text js-input" >
+            <option value="https://bootdey.com/img/Content/avatar/avatar1.png">Avatar1</option>
+            <option value="https://bootdey.com/img/Content/avatar/avatar2.png">Avatar2</option>
+            <option value="https://bootdey.com/img/Content/avatar/avatar3.png">Avatar3</option>
+            </select>
+      </div>
+      <div class="form-field col-lg-12">
+        <button  id="btt" class="submit-btn">Submit</button>
+      </div>
+   </form>
+</section>
+
+`;
+
+alertify.getDialog(formContent, '').set('selector', 'input[type="text"]');
+isButtonClicked = false;
+
+
+
+
+const submitBtn = document.querySelector('.submit-btn');
+
+if(submitBtn){
+    submitBtn.addEventListener('click', () => {
+    // event.preventDefault(); // Sayfa yenilemeyi engelle
+        
+
+    // Form alanlarından değerleri al
+    const name = document.getElementById('name').value;
+    const city = document.getElementById('city').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const about = document.getElementById('about').value;
+    const selectedAvatar = document.getElementById('opti').value; // Seçilen avatar seçeneğinin değerini al
+
+
+    console.log(selectedAvatar)
+    // AJAX POST isteği yap
+    fetch('/editProfile', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            user: userName,
+            city: city,
+            email: email,
+            password: password,
+            about: about,
+            avatar: selectedAvatar // Seçilen avatar URL'sini gönder
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            // Başarılı yanıt durumunda
+            console.log('Cevap:', response);
+            alert('Profiliniz başarıyla güncellendi!');
+            
+        } else {
+            // Hata durumunda
+            console.error('Hata:', response.status, response.statusText);
+            alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+        }
+    })
+    .catch(error => {
+        console.error('Hata:', error);
+        alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+    });
+ });
+}
+
+
+
+}
+
+
+
+    function renderPagination(data) {
+        const pageSize = 10;
+        const pagination = document.querySelector('.pagination');
+        pagination.innerHTML = '';
+
+        // Toplam sayfa sayısını hesapla
+        const pageCount = Math.ceil(data.length / pageSize);
+
+        for (let i = 1; i <= pageCount; i++) {
+            const button = document.createElement('button');
+            button.textContent = i;
+            button.addEventListener('click', () => {
+                
+                getUsers(i); // Sayfa numarasını parametre olarak iletebiliriz
+            });
+            pagination.appendChild(button);
+        }
+    }
+</script>
+
+
+
+
+
+<script>
+
+
+
+
+// profil edit
+   
+    function editProfile() {
+if (isButtonClicked) {
+    return;
+}
+
+isButtonClicked = true;
+
+
+var formContent = `
+   
+<section class="get-in-touch">
+   <h1 class="title">Edit Profile </h1>
+   <form class="contact-form row">
+      <div class="form-field col-lg-6">
+         <input id="name" class="input-text js-input" type="text" required>
+         <label class="label" for="name">İsim</label>
+      </div>
+      <div class="form-field col-lg-6 ">
+         <input id="email" class="input-text js-input" type="email" required>
+         <label class="label" for="email">E-mail</label>
+      </div>
+
+      <div class="form-field col-lg-6">
+         <input id="password" class="input-text js-input" type="password" required>
+         <label class="label" for="password">Şifre</label>
+      </div>
+
+      <div class="form-field col-lg-6">
+         <input id="city" class="input-text js-input" type="text" required>
+         <label class="label" for="city">Şehir</label>
+      </div>
+      
+      <div class="form-field col-lg-12">
+         <input id="about" class="input-text js-input" type="text" required>
+         <label class="label" for="message">Hakkımda</label>
+      </div>
+      <div class="form-field col-lg-12">
+         <select id="opti" class="input-text js-input" >
+            <option value="https://bootdey.com/img/Content/avatar/avatar1.png">Avatar1</option>
+            <option value="https://bootdey.com/img/Content/avatar/avatar2.png">Avatar2</option>
+            <option value="https://bootdey.com/img/Content/avatar/avatar3.png">Avatar3</option>
+            </select>
+      </div>
+      <div class="form-field col-lg-12">
+        <button  id="btt" class="submit-btn">Submit</button>
+      </div>
+   </form>
+</section>
+
+`;
+
+alertify.getDialog(formContent, '').set('selector', 'input[type="text"]');
+isButtonClicked = false;
+
+
+
+
+const submitBtn = document.querySelector('.submit-btn');
+
+if(submitBtn){
+    submitBtn.addEventListener('click', () => {
+    // event.preventDefault(); // Sayfa yenilemeyi engelle
+        
+    const userName = localStorage.getItem('name');
+
+    // Form alanlarından değerleri al
+    const name = document.getElementById('name').value;
+    const city = document.getElementById('city').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const about = document.getElementById('about').value;
+    const selectedAvatar = document.getElementById('opti').value; // Seçilen avatar seçeneğinin değerini al
+
+
+    console.log(selectedAvatar)
+    // AJAX POST isteği yap
+    fetch('/editProfile', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            user: userName,
+            city: city,
+            email: email,
+            password: password,
+            about: about,
+            avatar: selectedAvatar // Seçilen avatar URL'sini gönder
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            // Başarılı yanıt durumunda
+            console.log('Cevap:', response);
+            alert('Profiliniz başarıyla güncellendi!');
+            localStorage.setItem('name', name);
+        } else {
+            // Hata durumunda
+            console.error('Hata:', response.status, response.statusText);
+            alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+        }
+    })
+    .catch(error => {
+        console.error('Hata:', error);
+        alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+    });
+ });
+}
+
+}
+
+</script>
+
+<script>
+
+    // FETCH USER DATA
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    // Sayfa yüklendiğinde local storage'dan 'name' değerini al
+    const userName = localStorage.getItem('name');
+
+    // Eğer 'name' değeri varsa ve boş değilse, fetch ile '/editProfile' endpoint'ine istek gönder
+    if (userName) {
+        fetch('/selectProfile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: userName
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                // Hata durumunda
+                console.error('Hata:', response.status, response.statusText);
+            }
+        })
+        .then(data => {
+            console.log('Kullanıcı bilgileri:', data);
+            const nameUser = document.querySelector('.text-white h4');
+            const city = document.querySelector('.text-white p span');
+            const aboutDesc = document.querySelector('.aboutDesc p');
+            const profil = document.querySelector('.propp img');
+            nameUser.textContent = data.name;
+            // aboutDesc.textContent = data.description;
+            city.textContent = data.city;
+            profil.src = data.imgName
+            
+        })
+        .catch(error => {
+            // Hata durumunda
+            console.error('Hata:', error);
+        });
+    }
+});
+
+
+</script>
+
+<script>
+    // Token kontrolü
+
+document.addEventListener('DOMContentLoaded', function() {
+    const token = localStorage.getItem('token');
+    const admin = localStorage.getItem('admin');
+
+    if (!(token && admin) ) {
+        // Token varsa profil sayfasına yönlendir
+        window.location.href = '/login';
+    } 
+})
+
+
+</script>
+
+
+
+
+<%- include('./partials/_footer.ejs') %>

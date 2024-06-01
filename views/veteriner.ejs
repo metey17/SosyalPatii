@@ -1,0 +1,172 @@
+
+<%- include('./partials/_header4.ejs') %>
+<body style="background:rgb(253, 250, 255) ;">
+    
+
+        <%- include('./partials/_navbar.ejs') %>
+
+ 
+        <div class="container heightCont">
+            <h3>Yakınımdaki Veterinerler (5KM)</h3>
+            <hr>
+        </div>
+        <div id="container" class="container " style="margin-bottom: 100px; padding: 5px 30px 30px 30px;  height: 700px; overflow-y: scroll;">
+
+            <div class="preloader2" id="spinner">
+                <div class="loader2">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+
+            <!-- Dinamic data is going to come here -->
+        
+        </div>
+
+    <script>
+        const spinner  = document.querySelector('#spinner');
+        spinner.style.display = 'block';
+        navigator.geolocation.getCurrentPosition(function(position) {
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+
+  const xhr = new XMLHttpRequest();
+xhr.open("POST", "/veterinary-clinics");
+xhr.setRequestHeader("Content-Type", "application/json");
+
+const data = {
+  latitude: latitude,
+  longitude: longitude,
+};
+
+xhr.send(JSON.stringify(data));
+
+xhr.onload = function() {
+  if (xhr.status === 200) {
+    const response = JSON.parse(xhr.responseText);
+    // Veteriner kliniği bilgilerini listede gösterin.
+    const container = document.querySelector('#container'); // Select the container element
+    
+
+    // Loop through veterinary clinics and create cards
+    for (const clinic of response) {
+        
+      const card = document.createElement('div');
+      card.classList.add('row'); // Add row class for Bootstrap layout
+      card.classList.add('mt-3');
+
+
+
+      const col = document.createElement('div');
+      col.classList.add('col-md-12'); // Add col-md-12 class for full-width card
+
+      const clinicCard = document.createElement('div');
+      clinicCard.classList.add('card');
+      clinicCard.style.border = 'none';
+
+      // Add card image (replace with placeholder or logic to get clinic image)
+    //   const cardImg = document.createElement('div');
+    //   cardImg.classList.add('card-img');
+    //   const img = document.createElement('img');
+    //   img.classList.add('img-responsive');
+    //   img.src = clinic.icon; // Placeholder image
+    //   cardImg.appendChild(img);
+    //   clinicCard.appendChild(cardImg);
+
+      // Add card content
+      const cardBlock = document.createElement('div');
+      cardBlock.classList.add('card-block');
+
+      const cardTitle = document.createElement('div');
+      cardTitle.classList.add('card-title');
+      const title = document.createElement('h4');
+      title.textContent = clinic.name; // Set clinic name as title
+      cardTitle.appendChild(title);
+      cardBlock.appendChild(cardTitle);
+
+      const cardText = document.createElement('div');
+      cardText.classList.add('card-text');
+      const description = document.createElement('p');
+      // Add logic to display clinic address or other details
+      description.textContent = "Please check the clinic's website for details."; 
+      cardText.appendChild(description);
+      cardBlock.appendChild(cardText);
+
+      // Add star rating (replace with logic to get clinic rating)
+      const cardIcons = document.createElement('div');
+      cardIcons.classList.add('card-icons');
+      var x ;
+      const rating = clinic.rating;
+        if (rating >= 5) {
+        x = 5;
+        } else if (rating >= 4) {
+        x = 4;
+        } else if (rating >= 3) {
+        x = 3;
+        } else if (rating >= 2) {
+        x = 2;
+        } else if (rating >= 1) {
+        x = 1;
+        } else {
+        x = 0;
+        }
+      for (let i = 0; i < x; i++) {
+        const star = document.createElement('i');
+        star.classList.add('fa', 'fa-star');
+        cardIcons.appendChild(star);
+      }
+      cardBlock.appendChild(cardIcons);
+
+      const hr = document.createElement('hr');
+      cardBlock.appendChild(hr);
+
+      const cardFooter = document.createElement('div');
+      cardFooter.classList.add('card-footer');
+      cardFooter.style.borderTop = 'none';
+
+      const listInline = document.createElement('ul');
+      listInline.classList.add('list-inline');
+
+      // Add logic to display clinic address on map
+      const addressListItem = document.createElement('li');
+      const addressLink = document.createElement('a');
+      addressLink.href = "https://www.google.com/maps/search/" + encodeURIComponent(clinic.vicinity); // Replace with actual map link
+      addressLink.innerHTML = clinic.vicinity;
+      addressListItem.appendChild(addressLink);
+      listInline.appendChild(addressListItem);
+
+      // Add optional wishlist functionality (remove if not needed)
+    //   const wishlistListItem = document.createElement('li');
+    //   wishlistListItem.classList.add('pull-right', 'out-border');
+    //   const wishlistLink = document.createElement('a');
+    //   wishlistLink.href = "#";
+    //   wishlistLink.innerHTML = '<i class="fa fa-heart"></i> Add to Wishlist';
+    //   wishlistListItem.appendChild(wishlistLink);
+    //   listInline.appendChild(wishlistListItem);
+
+      cardFooter.appendChild(listInline);
+      cardBlock.appendChild(cardFooter);
+
+      clinicCard.appendChild(cardBlock);
+      col.appendChild(clinicCard);
+      card.appendChild(col);
+
+      container.appendChild(card);}
+      spinner.style.display = 'none';
+  } else {
+    console.error("Hata:", xhr.responseText);
+  }
+};
+
+});
+    </script>
+
+
+
+
+
+
+<!-- <%- include('./partials/_chat.ejs') %> -->
+
+<%- include('./partials/_footer.ejs') %>

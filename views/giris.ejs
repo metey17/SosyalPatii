@@ -1,0 +1,168 @@
+<%- include('./partials/_header.ejs') %>
+
+<body class="home-3">
+    <div class="preloader">
+        <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <%- include('./partials/_navbar.ejs') %>
+
+    <main class="main">
+
+        <div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">
+            <div class="container">
+                <h2 class="breadcrumb-title">Giriş Yap</h2>
+                <ul class="breadcrumb-menu">
+                    <li><a href="index.html">Anasayfa</a></li>
+                    <li class="active">Giriş Yap</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="login-area py-120">
+            <div class="container">
+                <div class="col-md-5 mx-auto">
+                    <div class="login-form">
+                        <div class="login-header">
+                            <img src="assets/img/logo/logo.png" alt="">
+                            <p>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Sosyal Pati hesabınızla giriş yapın</font>
+                                </font>
+                            </p>
+
+                            <div class="alert" id="alertMessage" style="display: none;" role="alert"></div>
+
+                        </div>
+
+
+                        
+
+
+                        <form method="POST">
+                            <div class="form-group">
+                                <label>
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">E-posta Adresi</font>
+                                    </font>
+                                </label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="E-posta adresiniz">
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">Şifre</font>
+                                    </font>
+                                </label>
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Şifreniz">
+                            </div>
+                            <div class="d-flex justify-content-between mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="remember">
+                                    <label class="form-check-label" for="remember">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">
+                                                Beni Hatırla
+                                            </font>
+                                        </font>
+                                    </label>
+                                </div>
+                                <a href="sifre-yenile.html" class="forgot-pass">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">Parolanızı mı unuttunuz?</font>
+                                    </font>
+                                </a>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <button  id="submitButton" class="theme-btn"><i class="far fa-sign-in"></i>
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">Giriş</font>
+                                    </font>
+                                </button>
+                            </div>
+                        </form>
+
+
+
+                       
+                        <script>
+                            $(document).ready(function() {
+                                $('#submitButton').click(function(event) {
+                                    event.preventDefault();
+                                    
+                                    var email = $('#email').val();
+                                    var password = $('#password').val();
+                                    
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/login',
+                                        data: {
+                                            email: email,
+                                            password: password
+                                        },
+                                        success: function(response) {
+                                            if (response.error) {
+                                                console.log('Hata: ' + response.error);
+                                            } else {
+                                                localStorage.setItem('token', response.token);
+                                                const name = response.name;
+                                                localStorage.setItem('name', name);
+
+                                                if(response.role == 'admin'){
+                                                    window.location.href = '/admin';
+                                                    localStorage.setItem('admin','admin')
+                                                }else{
+                                                    window.location.href = '/profile';
+                                                }
+
+                                                
+                                            }
+                                        },
+                                        error: function(xhr, status, error) {
+                                            $('#alertMessage').removeClass('alert-success').addClass('alert-danger').text(xhr.responseText).show();
+                                            setTimeout(function() {
+                                                $('#alertMessage').hide(); 
+                                            }, 5000);
+
+                                                
+                                                $('#email').val('');
+                                                $('#password').val('');
+                                                
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+                        
+                            
+                            
+
+
+                        <div class="login-footer">
+                            <p>
+                                <a href="/register">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">Hesabınız yok mu?</font>
+                                    </font>
+                                </a>
+                                <a href="/register">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">Kayıt Ol!.</font>
+                                    </font>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <%- include('./partials/_chat.ejs') %>
+
+    <%- include('./partials/_footer.ejs') %>

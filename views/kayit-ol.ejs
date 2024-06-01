@@ -1,0 +1,167 @@
+<%- include('./partials/_header.ejs') %>
+<body class="home-3">
+    <div class="preloader">
+        <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <%- include('./partials/_navbar.ejs') %>
+
+    <main class="main">
+
+        <div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">
+            <div class="container">
+                <h2 class="breadcrumb-title">Kayıt Ol</h2>
+                <ul class="breadcrumb-menu">
+                    <li><a href="index.html">Anasayfa</a></li>
+                    <li class="active">Kayıt Ol</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="login-area py-120">
+            <div class="container">
+                <div class="col-md-5 mx-auto">
+                    <div class="login-form">
+                        <div class="login-header">
+                            <img src="assets/img/logo/logo.png" alt="">
+                            <p>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Hesabınızı oluşturun</font>
+                                </font>
+                            </p>
+
+                            <div class="alert" id="alertMessage" style="display: none;" role="alert"></div>
+
+                        </div>
+
+
+                        <form method="POST">
+                            <div class="form-group">
+                                <label>
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">Ad Soyad</font>
+                                    </font>
+                                </label>
+                                <input type="text" id="name" class="form-control" placeholder="Adınız">
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">E-posta Adresi</font>
+                                    </font>
+                                </label>
+                                <input type="email" id="email" class="form-control" placeholder="E-posta adresiniz">
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">Şifre</font>
+                                    </font>
+                                </label>
+                                <input type="password" id="password" class="form-control" placeholder="Şifreniz">
+                            </div>
+                            <div class="form-check form-group">
+                                <input class="form-check-input" type="checkbox" value="" id="agree" required>
+                                <label class="form-check-label" for="agree">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">
+                                            Katılıyorum</font>
+                                    </font><a href="gizlilik-politikasi.html">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Kullanım Şartları.</font>
+                                        </font>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <button type="submit" id="submitButton" class="theme-btn"><i class="far fa-paper-plane"></i>
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">Kayıt ol!</font>
+                                    </font>
+                                </button>
+                            </div>
+                        </form>
+
+             
+                        <script>
+                            $(document).ready(function() {
+                                $('#submitButton').click(function(event) {
+                                    event.preventDefault();
+
+                                    var agreeChecked = $('#agree').is(':checked');
+
+                                    if (!agreeChecked) {
+                                        alert('Kullanım koşullarını kabul etmelisiniz.');
+                                        event.preventDefault();
+                                    }else{
+                                        var name = $('#name').val();
+                                    var email = $('#email').val();
+                                    var password = $('#password').val();
+                                    
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/register',
+                                        data: {
+                                            name: name,
+                                            email: email,
+                                            password: password
+                                        },
+                                        success: function(response) {
+                                            
+                                            $('#alertMessage').removeClass('alert-danger').addClass('alert-success').text(response).show();
+                                            setTimeout(function() {
+                                                $('#alertMessage').hide();
+                                            }, 5000);
+                                            
+                                                $('#name').val('');
+                                                $('#email').val('');
+                                                $('#password').val('');
+                                                $('#agree').prop('checked', false);
+
+                                            
+                                        },
+                                        error: function(xhr, status, error) {
+                                            $('#alertMessage').removeClass('alert-success').addClass('alert-danger').text(xhr.responseText).show();
+                                            setTimeout(function() {
+                                                $('#alertMessage').hide(); 
+                                            }, 5000);
+
+                                                $('#name').val('');
+                                                $('#email').val('');
+                                                $('#password').val('');
+                                                $('#agree').prop('checked', false);
+
+                                            
+                                        }
+                                    });
+                                    }
+                                    
+                                   
+                                });
+                            });
+                        </script>
+
+
+                        <div class="login-footer">
+                            <p>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Zaten hesabınız var mı?</font>
+                                </font><a href="/login">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">Giriş yap</font>
+                                    </font>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <%- include('./partials/_footer.ejs') %>
