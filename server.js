@@ -27,6 +27,7 @@ import { setSharingData } from './controllers/setSharingController.js';
 import { getUsers } from './controllers/getUsersController.js';
 import { getBlog, setBlog } from './controllers/blogController.js';
 import { getConverse } from './controllers/converseController.js';
+import { editPost, removePost } from './controllers/editPost.js';
 
 
 app.use(bodyParser.json({ limit: '50mb' })); // 50 MB'a kadar izin ver
@@ -102,7 +103,7 @@ app.post("/veterinary-clinics", async (req, res) => {
   app.listen(3000);
   
   async function getVeterinaryClinics(latitude, longitude) {
-    const apiKey = 'AIzaSyAaS31loVNkGAxozYLCwef1JbqOyJF_XhQ';
+    const apiKey = "AIzaSyCxKH0S26_fO3lEXA8d5JqPGVC40kaaZQs";
     const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=veterinary_care&key=${apiKey}`;
   
     const response = await fetch(url);
@@ -198,6 +199,8 @@ app.post('/getUsers', getUsers);
 app.post('/getBlog', getBlog);
 app.post('/setBlog', setBlog);
 app.post('/getConverse', getConverse);
+app.post('/editPost', editPost);
+app.post('/removePost', removePost);
 
 
 
